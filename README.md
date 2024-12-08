@@ -2,7 +2,53 @@
 
 Under development...
 
-## Getting started
+## Project structure
+
+```bash
+lib/
+├── app/                    # App configuration
+│   ├── di/                # Dependency injection
+│   ├── l10n/              # Localization
+│   ├── routes/            # Routing
+│   └── theme/             # Theme configuration
+│
+├── core/                  # Core functionality
+│   ├── api/              # API related code
+│   ├── bloc/             # Base bloc classes
+│   ├── error/            # Error handling
+│   ├── storage/          # Local storage
+│   └── utils/            # Utilities
+│
+├── features/             # Business features
+│   ├── demo/            # Demo feature
+│   │   ├── bloc/        # Demo state management
+│   │   ├── models/      # Demo models
+│   │   ├── repositories/ # Demo repositories
+│   │   └── services/    # Demo services
+│   │
+│   └── settings/        # Settings feature
+│       ├── bloc/        # Settings state management
+│       ├── models/      # Settings models
+│       └── services/    # Settings services
+│
+├── screens/             # UI screens
+│   ├── home/           # Home screen
+│   │   ├── widgets/    # Screen-specific widgets
+│   │   └── home_screen.dart
+│   │
+│   ├── manga_detail/   # Manga detail screen
+│   │   ├── widgets/    # Screen-specific widgets  
+│   │   └── manga_detail_screen.dart
+│   │
+│   └── editor/         # Editor screen
+│       ├── widgets/    # Screen-specific widgets
+│       └── editor_screen.dart
+│
+└── shared/            # Shared components
+    ├── widgets/       # Reusable widgets
+    ├── models/       # Shared models
+    └── constants/    # Shared constants
+```
 
 ### Scripts
 
@@ -20,56 +66,4 @@ flutter pub run build_runner watch --delete-conflicting-outputs
 
 # Build once
 flutter pub run build_runner build --delete-conflicting-outputs
-```
-
-### Project structure
-
-```bash
-lib/
-├── app/
-│   ├── di/                  # Dependency injection
-│   │   ├── injection.dart
-│   │   └── modules/
-│   ├── l10n/               # Localization resources
-│   ├── routes/             # Routing configuration
-│   │   ├── guards/
-│   │   └── app_router.dart
-│   └── theme/              # Theme configuration
-│       ├── bloc/           # Theme state management
-│       ├── data/           # Theme data layer
-│       ├── models/         # Theme models
-│       └── styles/         # Theme styles
-│           ├── colors.dart
-│           ├── decorations.dart
-│           ├── dimensions.dart
-│           └── text_styles.dart
-│
-├── core/                   # Core functionality
-│   ├── api/               # API related code
-│   │   ├── interceptors/
-│   │   └── endpoints.dart
-│   ├── bloc/              # Base bloc classes
-│   ├── error/             # Error handling
-│   ├── storage/           # Local storage
-│   └── utils/             # Utilities
-│       ├── extensions/
-│       ├── helpers/
-│       └── constants/
-│
-├── features/              # Feature modules
-│   ├── home/
-│   │   ├── bloc/
-│   │   ├── models/
-│   │   ├── repositories/
-│   │   ├── screens/
-│   │   └── widgets/
-│   ├── manga/
-│   ├── reader/
-│   ├── search/
-│   └── settings/
-│
-└── shared/               # Shared components
-    ├── widgets/          # Reusable widgets
-    ├── models/          # Shared models
-    └── enums/           # Shared enums
 ```
