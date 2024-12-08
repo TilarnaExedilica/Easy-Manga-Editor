@@ -1,35 +1,28 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
-  // Primary Colors
-  static const primary = Color(0xFF2196F3);
-  static const primaryDark = Color(0xFF1976D2);
-  static const primaryLight = Color(0xFF64B5F6);
+  static const primary = Color(0xFF1A73E8);
+  static const primaryDark = Color(0xFF0D47A1);
+  static const primaryLight = Color(0xFF4285F4);
 
-  // Background Colors
-  static const backgroundLight = Color(0xFFFFFFFF);
-  static const backgroundDark = Color(0xFF121212);
+  static const backgroundLight = Color(0xFFFAFAFA);
+  static const backgroundDark = Color(0xFF101014);
 
-  // Text Colors
-  static const textLight = Color(0xFF000000);
-  static const textDark = Color(0xFFFFFFFF);
+  static const textLight = Color(0xFF202124);
+  static const textDark = Color(0xFFE8EAED);
 
-  // Surface Colors
   static const surfaceLight = Color(0xFFFFFFFF);
-  static const surfaceDark = Color(0xFF1E1E1E);
+  static const surfaceDark = Color(0xFF202124);
 
-  // Error Colors
-  static const error = Color(0xFFB00020);
-  static const errorDark = Color(0xFFCF6679);
+  static const error = Color(0xFFDC3545);
+  static const errorDark = Color(0xFFE53935);
 
-  // Drawer Colors
-  static const drawerBackgroundLight = Color(0xFFF5F5F5);
-  static const drawerBackgroundDark = Color(0xFF242424);
+  static const drawerBackgroundLight = Color(0xFFF3F3F5);
+  static const drawerBackgroundDark = Color(0xFF292930);
 
-  // Container Colors
-  static const surfaceContainerHighestLight = Color(0xFFE8ECF0);
-  static const surfaceContainerHighestDark = Color(0xFF1A1D21);
+  static const surfaceContainerHighestLight = Color(0xFFE3E6EC);
+  static const surfaceContainerHighestDark = Color(0xFF1E1F24);
 
   static const secondaryContainerLight = Color(0xFFF8F9FA);
-  static const secondaryContainerDark = Color(0xFF2D3135);
+  static const secondaryContainerDark = Color(0xFF2D2E35);
 }

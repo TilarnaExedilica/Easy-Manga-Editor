@@ -4,8 +4,8 @@ import 'package:easy_manga_editor/app/l10n/tr_keys.dart';
 import 'package:easy_manga_editor/shared/widgets/buttons/theme_button.dart';
 import 'package:easy_manga_editor/core/utils/constants/ui_constants.dart';
 
-class SourceDrawer extends StatelessWidget {
-  const SourceDrawer({super.key});
+class ControlDrawer extends StatelessWidget {
+  const ControlDrawer({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,6 +15,7 @@ class SourceDrawer extends StatelessWidget {
       child: SafeArea(
         child: Column(
           children: [
+            // Header
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: Text(
@@ -22,7 +23,24 @@ class SourceDrawer extends StatelessWidget {
                 style: Theme.of(context).textTheme.titleLarge,
               ),
             ),
-            const ThemeButton(),
+            // Main content
+            const Expanded(
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [],
+                ),
+              ),
+            ),
+            // Bottom controls
+            Container(
+              padding: const EdgeInsets.all(16.0),
+              child: const Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  ThemeButton(),
+                ],
+              ),
+            ),
           ],
         ),
       ),

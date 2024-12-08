@@ -1,3 +1,4 @@
+import 'package:easy_manga_editor/app/theme/styles/broken_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:easy_manga_editor/app/theme/bloc/theme_bloc.dart';
@@ -16,25 +17,25 @@ class ThemeButton extends StatelessWidget {
             color: Theme.of(context).colorScheme.surfaceContainerHighest,
             borderRadius: BorderRadius.circular(8),
           ),
-          padding: const EdgeInsets.all(2),
+          padding: const EdgeInsets.all(3),
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
               _buildThemeOption(
                 context,
-                Icons.settings,
+                Broken.autobrightness,
                 ThemeMode.system,
                 state.themeMode,
               ),
               _buildThemeOption(
                 context,
-                Icons.light_mode,
+                Broken.sun_1,
                 ThemeMode.light,
                 state.themeMode,
               ),
               _buildThemeOption(
                 context,
-                Icons.dark_mode,
+                Broken.moon,
                 ThemeMode.dark,
                 state.themeMode,
               ),
@@ -67,7 +68,7 @@ class ThemeButton extends StatelessWidget {
           icon,
           size: 20,
           color: isSelected
-              ? Theme.of(context).colorScheme.onSecondaryContainer
+              ? Theme.of(context).colorScheme.primary
               : Theme.of(context).colorScheme.onSurfaceVariant,
         ),
       ),
