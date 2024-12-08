@@ -21,4 +21,15 @@ class AppColors {
   // Error Colors
   static const error = Color(0xFFB00020);
   static const errorDark = Color(0xFFCF6679);
+
+  // Drawer Colors
+  static const drawerBackgroundLight = Color(0xFFF5F5F5);
+  static const drawerBackgroundDark = Color(0xFF242424);
+
+  // Container Colors
+  static const surfaceContainerHighestLight = Color(0xFFE8ECF0);
+  static const surfaceContainerHighestDark = Color(0xFF1A1D21);
+
+  static const secondaryContainerLight = Color(0xFFF8F9FA);
+  static const secondaryContainerDark = Color(0xFF2D3135);
 }

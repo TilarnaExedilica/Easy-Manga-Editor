@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:easy_manga_editor/app/theme/styles/colors.dart';
+import 'package:easy_manga_editor/core/utils/constants/ui_constants.dart';
 
 class AppTheme {
   static const animationDuration = Duration(milliseconds: 300);
@@ -11,10 +12,20 @@ class AppTheme {
       primary: AppColors.primary,
       secondary: AppColors.primaryDark,
       surface: AppColors.surfaceLight,
+      surfaceContainerHighest: AppColors.surfaceContainerHighestLight,
+      secondaryContainer: AppColors.secondaryContainerLight,
       error: AppColors.error,
     ),
     scaffoldBackgroundColor: AppColors.backgroundLight,
     fontFamily: 'LexendDeca',
+    drawerTheme: const DrawerThemeData(
+      backgroundColor: AppColors.drawerBackgroundLight,
+      width: UIConstants.drawerWidth,
+      elevation: 0,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.zero,
+      ),
+    ),
     pageTransitionsTheme: const PageTransitionsTheme(
       builders: {
         TargetPlatform.android: ZoomPageTransitionsBuilder(),
@@ -30,10 +41,20 @@ class AppTheme {
       primary: AppColors.primary,
       secondary: AppColors.primaryLight,
       surface: AppColors.surfaceDark,
+      surfaceContainerHighest: AppColors.surfaceContainerHighestDark,
+      secondaryContainer: AppColors.secondaryContainerDark,
       error: AppColors.errorDark,
     ),
     scaffoldBackgroundColor: AppColors.backgroundDark,
     fontFamily: 'LexendDeca',
+    drawerTheme: const DrawerThemeData(
+      backgroundColor: AppColors.drawerBackgroundDark,
+      width: UIConstants.drawerWidth,
+      elevation: 0,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.zero,
+      ),
+    ),
     pageTransitionsTheme: const PageTransitionsTheme(
       builders: {
         TargetPlatform.android: ZoomPageTransitionsBuilder(),
