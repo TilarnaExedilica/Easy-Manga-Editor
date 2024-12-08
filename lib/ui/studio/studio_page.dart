@@ -10,6 +10,7 @@ import 'package:google_mlkit_text_recognition/google_mlkit_text_recognition.dart
 import 'package:google_mlkit_translation/google_mlkit_translation.dart';
 import 'dart:async';
 import 'package:path_provider/path_provider.dart';
+import 'package:flutter/foundation.dart';
 import 'dart:io';
 import 'package:dio/dio.dart';
 import 'dart:ui' as ui;
@@ -53,7 +54,8 @@ class TextOverlayPainter extends CustomPainter {
       );
 
       final paint = Paint()
-        ..color = Colors.white.withOpacity(0.9)
+        ..color = Colors.white
+        // TODO: Change color/opacity text background
         ..style = PaintingStyle.fill;
       canvas.drawRect(scaledRect, paint);
 
@@ -156,19 +158,31 @@ class _StudioPageState extends State<StudioPage> {
         final translatedText = await _translator.translateText(originalText);
         translations[originalText] = translatedText;
 
-        print('Original text: $originalText');
-        print('Translated text: $translatedText');
+        if (kDebugMode) {
+          print('Original text: $originalText');
+        }
+        if (kDebugMode) {
+          print('Translated text: $translatedText');
+        }
       }
 
       setState(() {
         textBlocks = result.blocks;
       });
 
-      print('Number of text blocks: ${textBlocks.length}');
-      print('Number of translations: ${translations.length}');
-      print('Translations map: $translations');
+      if (kDebugMode) {
+        print('Number of text blocks: ${textBlocks.length}');
+      }
+      if (kDebugMode) {
+        print('Number of translations: ${translations.length}');
+      }
+      if (kDebugMode) {
+        print('Translations map: $translations');
+      }
     } catch (e) {
-      print('Error in processImage: $e');
+      if (kDebugMode) {
+        print('Error in processImage: $e');
+      }
       setState(() {
         errorMessage = 'Có lỗi xảy ra: $e';
       });
@@ -191,7 +205,9 @@ class _StudioPageState extends State<StudioPage> {
         filePath,
         onReceiveProgress: (received, total) {
           if (total != -1) {
-            print('${(received / total * 100).toStringAsFixed(0)}%');
+            if (kDebugMode) {
+              print('${(received / total * 100).toStringAsFixed(0)}%');
+            }
           }
         },
       );
@@ -307,7 +323,7 @@ class _StudioPageState extends State<StudioPage> {
                           },
                     child: isProcessing
                         ? const CircularProgressIndicator()
-                        : const Text('Nhận dạng và dich'),
+                        : const Text('Nhận dạng và dịch'),
                   ),
                   const SizedBox(height: 16),
                   if (errorMessage != null)
@@ -315,16 +331,6 @@ class _StudioPageState extends State<StudioPage> {
                       errorMessage!,
                       style: const TextStyle(color: Colors.red),
                     ),
-                  const SizedBox(height: 16),
-                  const Text('Văn bản gốc:',
-                      style: TextStyle(fontWeight: FontWeight.bold)),
-                  const SizedBox(height: 8),
-                  Text(recognizedText),
-                  const SizedBox(height: 16),
-                  const Text('Bản dịch:',
-                      style: TextStyle(fontWeight: FontWeight.bold)),
-                  const SizedBox(height: 8),
-                  Text(translatedText),
                 ],
               ),
             ),

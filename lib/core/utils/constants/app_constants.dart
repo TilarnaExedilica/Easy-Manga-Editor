@@ -1,6 +1,6 @@
 class AppConstants {
   // App info
-  static const String appName = 'easy_manga_editor';
+  static const String appName = 'Easy Manga Editor';
   static const String appVersion = '1.0.0';
 
   // API
