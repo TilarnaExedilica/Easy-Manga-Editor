@@ -1,0 +1,12 @@
+{
+  "appName": "easy_manga_editor",
+  "home": "Home",
+  "yearsAgo": "{} years ago",
+  "monthsAgo": "{} months ago",
+  "daysAgo": "{} days ago",
+  "hoursAgo": "{} hours ago",
+  "minutesAgo": "{} minutes ago",
+  "justNow": "Just now",
+  "cancel": "Cancel",
+  "confirm": "Confirm"
+}

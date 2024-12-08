@@ -1,0 +1,12 @@
+{
+  "appName": "easy_manga_editor",
+  "home": "Trang chủ",
+  "yearsAgo": "{} năm trước",
+  "monthsAgo": "{} tháng trước",
+  "daysAgo": "{} ngày trước",
+  "hoursAgo": "{} giờ trước",
+  "minutesAgo": "{} phút trước",
+  "justNow": "Vừa xong",
+  "cancel": "Hủy",
+  "confirm": "Xác nhận"
+}

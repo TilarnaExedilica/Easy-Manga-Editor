@@ -1,0 +1,97 @@
+name: easy_manga_editor
+description: "Easy Manga Editor is a simple app for editing and translating manga images with ease."
+publish_to: "none"
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.5.3
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # UI Components
+  cupertino_icons: ^1.0.8
+  cached_network_image: ^3.4.1
+  photo_view: ^0.15.0
+  infinite_scroll_pagination: ^4.1.0
+  animations: ^2.0.11
+
+  # State Management
+  flutter_bloc: ^8.1.6
+  equatable: ^2.0.7
+
+  # Routing
+  auto_route: ^9.2.2
+
+  # Network
+  dio: ^5.7.0
+  pretty_dio_logger: ^1.4.0
+
+  # Storage
+  shared_preferences: ^2.3.3
+
+  # DI
+  get_it: ^8.0.2
+  injectable: ^2.5.0
+
+  # Utils
+  logger: ^2.5.0
+  package_info_plus: ^8.1.1
+  flutter_native_splash: ^2.4.3
+  system_theme: ^3.1.2
+
+  # Code Generation
+  json_annotation: ^4.9.0
+  freezed_annotation: ^2.4.4
+
+  # Localization
+  easy_localization: ^3.0.7
+
+  # State Persistence
+  hydrated_bloc: ^9.1.5
+  path_provider: ^2.1.5
+
+  # ML
+  google_mlkit_text_recognition: ^0.14.0
+  google_mlkit_translation: ^0.12.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  # Linting
+  flutter_lints: ^4.0.0
+
+  # Code Generation
+  build_runner: ^2.4.13
+  auto_route_generator: ^9.0.0
+  json_serializable: ^6.9.0
+  injectable_generator: ^2.6.2
+  freezed: ^2.5.7
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/fonts/
+    - assets/translations/
+
+  fonts:
+    - family: broken
+      fonts:
+        - asset: assets/fonts/broken.ttf
+    - family: broken_filled
+      fonts:
+        - asset: assets/fonts/broken_filled.ttf
+    - family: LexendDeca
+      fonts:
+        - asset: assets/fonts/LexendDeca/LexendDeca-Black.ttf
+        - asset: assets/fonts/LexendDeca/LexendDeca-Bold.ttf
+        - asset: assets/fonts/LexendDeca/LexendDeca-ExtraBold.ttf
+        - asset: assets/fonts/LexendDeca/LexendDeca-ExtraLight.ttf
+        - asset: assets/fonts/LexendDeca/LexendDeca-Light.ttf
+        - asset: assets/fonts/LexendDeca/LexendDeca-Medium.ttf
+        - asset: assets/fonts/LexendDeca/LexendDeca-Regular.ttf
+        - asset: assets/fonts/LexendDeca/LexendDeca-SemiBold.ttf
+        - asset: assets/fonts/LexendDeca/LexendDeca-Thin.ttf
