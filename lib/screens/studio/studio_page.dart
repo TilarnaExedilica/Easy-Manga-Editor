@@ -15,11 +15,11 @@ import 'package:dio/dio.dart';
 import 'dart:ui' as ui;
 
 @RoutePage()
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class StudioPage extends StatefulWidget {
+  const StudioPage({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<StudioPage> createState() => _StudioPageState();
 }
 
 class TextOverlayPainter extends CustomPainter {
@@ -120,7 +120,7 @@ class TextOverlayPainter extends CustomPainter {
   bool shouldRepaint(covariant CustomPainter oldDelegate) => true;
 }
 
-class _HomePageState extends State<HomePage> {
+class _StudioPageState extends State<StudioPage> {
   final TextRecognizer _textRecognizer = TextRecognizer();
   final OnDeviceTranslator _translator = OnDeviceTranslator(
     sourceLanguage: TranslateLanguage.english,

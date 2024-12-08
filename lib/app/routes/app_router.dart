@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:injectable/injectable.dart';
-import 'package:easy_manga_editor/features/home/screens/home_page.dart';
+import 'package:easy_manga_editor/screens/home/home_page.dart';
+import 'package:easy_manga_editor/screens/studio/studio_page.dart';
 
 part 'app_router.gr.dart';
 
@@ -20,6 +21,10 @@ class AppRouter extends RootStackRouter {
           path: '/',
           page: HomeRoute.page,
           initial: true,
+        ),
+        AutoRoute(
+          path: '/studio',
+          page: StudioRoute.page,
         ),
       ];
 }

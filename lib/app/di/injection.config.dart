@@ -39,14 +39,14 @@ extension GetItInjectableX on _i174.GetIt {
     gh.singleton<_i790.AutoRouter>(() => routerModule.router);
     gh.singleton<_i430.ApiClient>(() => _i430.ApiClient());
     gh.singletonAsync<_i944.AppStorage>(() => _i944.AppStorage.create());
-    gh.singletonAsync<_i304.AuthInterceptor>(() async =>
-        apiModule.authInterceptor(await getAsync<_i944.AppStorage>()));
     gh.factoryAsync<_i284.AuthGuard>(
         () async => _i284.AuthGuard(await getAsync<_i944.AppStorage>()));
     gh.factoryAsync<_i671.ThemePreferences>(
         () async => _i671.ThemePreferences(await getAsync<_i944.AppStorage>()));
     gh.singleton<_i629.AppRouter>(
         () => _i629.AppRouter(router: gh<_i790.AutoRouter>()));
+    gh.singletonAsync<_i304.AuthInterceptor>(() async =>
+        apiModule.authInterceptor(await getAsync<_i944.AppStorage>()));
     return this;
   }
 }

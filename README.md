@@ -34,15 +34,11 @@ lib/
 ├── screens/             # UI screens
 │   ├── home/           # Home screen
 │   │   ├── widgets/    # Screen-specific widgets
-│   │   └── home_screen.dart
+│   │   └── home_page.dart
 │   │
-│   ├── manga_detail/   # Manga detail screen
-│   │   ├── widgets/    # Screen-specific widgets  
-│   │   └── manga_detail_screen.dart
-│   │
-│   └── editor/         # Editor screen
+│   └── studio/         # Studio screen
 │       ├── widgets/    # Screen-specific widgets
-│       └── editor_screen.dart
+│       └── studio_page.dart
 │
 └── shared/            # Shared components
     ├── widgets/       # Reusable widgets

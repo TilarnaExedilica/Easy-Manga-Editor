@@ -27,3 +27,22 @@ class HomeRoute extends PageRouteInfo<void> {
     },
   );
 }
+
+/// generated route for
+/// [StudioPage]
+class StudioRoute extends PageRouteInfo<void> {
+  const StudioRoute({List<PageRouteInfo>? children})
+      : super(
+          StudioRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'StudioRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const StudioPage();
+    },
+  );
+}
