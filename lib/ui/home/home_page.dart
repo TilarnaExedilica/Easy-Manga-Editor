@@ -31,8 +31,9 @@ class HomePage extends StatelessWidget {
                 showDialog(
                   context: context,
                   builder: (context) => const ConfirmDialog(
-                    title: 'Test Popup',
-                    message: 'This is a test popup',
+                    title: 'Thoát',
+                    message:
+                        'Bạn có muốn thoát không? Các thay đổi sẽ không được lưu',
                   ),
                 );
               },

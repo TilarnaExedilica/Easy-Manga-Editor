@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:easy_manga_editor/app/theme/styles/dimensions.dart';
+import 'package:easy_manga_editor/app/theme/styles/text_styles.dart';
 
 class AppButton extends StatelessWidget {
   final String text;
@@ -73,6 +74,9 @@ class AppButton extends StatelessWidget {
               ),
             ),
           )
-        : Text(text);
+        : Text(
+            text,
+            style: AppTextStyles.button,
+          );
   }
 }

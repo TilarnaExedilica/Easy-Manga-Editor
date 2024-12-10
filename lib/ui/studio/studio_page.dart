@@ -1,8 +1,11 @@
 import 'package:easy_manga_editor/shared/widgets/drawer/control_drawer.dart';
 import 'package:easy_manga_editor/shared/widgets/drawer/tools_drawer.dart';
+import 'package:easy_manga_editor/shared/widgets/loading/loading_indicator.dart';
 import 'package:easy_manga_editor/shared/widgets/scaffold/extend_scaffold.dart';
 import 'package:flutter/material.dart';
 import 'package:auto_route/auto_route.dart';
+import 'package:flutter/rendering.dart';
+import 'package:flutter/services.dart';
 import 'package:google_mlkit_text_recognition/google_mlkit_text_recognition.dart';
 import 'package:google_mlkit_translation/google_mlkit_translation.dart';
 import 'dart:async';
@@ -135,8 +138,9 @@ class _StudioPageState extends State<StudioPage> {
   final String imageUrl =
       'https://i.ibb.co/0MyTJhc/3387f0f6-45ba-4bd7-b4e1-3665c5d943b6.jpg';
 
-  ui.Image? _image;
   Size? _imageSize;
+
+  final GlobalKey _repaintBoundaryKey = GlobalKey();
 
   Future<void> processImage(String imageUrl) async {
     setState(() {
@@ -229,9 +233,34 @@ class _StudioPageState extends State<StudioPage> {
     stream.addListener(listener);
     final ui.Image image = await completer.future;
     setState(() {
-      _image = image;
       _imageSize = Size(image.width.toDouble(), image.height.toDouble());
     });
+  }
+
+  Future<void> _exportImage() async {
+    try {
+      RenderRepaintBoundary boundary = _repaintBoundaryKey.currentContext!
+          .findRenderObject() as RenderRepaintBoundary;
+      ui.Image image = await boundary.toImage();
+      ByteData? byteData =
+          await image.toByteData(format: ui.ImageByteFormat.png);
+      Uint8List pngBytes = byteData!.buffer.asUint8List();
+
+      final Directory tempDir = await getTemporaryDirectory();
+      final String filePath = '${tempDir.path}/exported_image.png';
+      final File file = File(filePath);
+      await file.writeAsBytes(pngBytes);
+
+      await Clipboard.setData(ClipboardData(text: filePath));
+
+      if (kDebugMode) {
+        print('Đã xuất ảnh và copy đường dẫn vào clipboard: $filePath');
+      }
+    } catch (e) {
+      if (kDebugMode) {
+        print('Lỗi khi xuất ảnh: $e');
+      }
+    }
   }
 
   @override
@@ -248,9 +277,14 @@ class _StudioPageState extends State<StudioPage> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            if (_image != null && _imageSize != null)
-              LayoutBuilder(
+            RepaintBoundary(
+              key: _repaintBoundaryKey,
+              child: LayoutBuilder(
                 builder: (context, constraints) {
+                  if (_imageSize == null) {
+                    return const Center(child: LoadingIndicator());
+                  }
+
                   final displaySize = Size(
                     constraints.maxWidth,
                     constraints.maxWidth *
@@ -282,6 +316,11 @@ class _StudioPageState extends State<StudioPage> {
                   );
                 },
               ),
+            ),
+            ElevatedButton(
+              onPressed: _exportImage,
+              child: const Text('Xuất ảnh'),
+            ),
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: Column(
@@ -296,7 +335,7 @@ class _StudioPageState extends State<StudioPage> {
                             await processImage(localPath);
                           },
                     child: isProcessing
-                        ? const CircularProgressIndicator()
+                        ? const LoadingIndicator()
                         : const Text('Nhận dạng và dịch'),
                   ),
                   const SizedBox(height: 16),

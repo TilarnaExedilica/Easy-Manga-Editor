@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:easy_manga_editor/app/theme/styles/dimensions.dart';
 import 'package:easy_manga_editor/shared/widgets/buttons/app_button.dart';
+import 'package:easy_manga_editor/app/theme/styles/text_styles.dart';
 
 class ConfirmDialog extends StatelessWidget {
   final String title;
@@ -24,8 +25,14 @@ class ConfirmDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: Text(title),
-      content: Text(message),
+      title: Text(
+        title,
+        style: AppTextStyles.h3,
+      ),
+      content: Text(
+        message,
+        style: AppTextStyles.bodyMedium,
+      ),
       actions: [
         AppButton(
           text: cancelText ?? 'cancel'.tr(),
