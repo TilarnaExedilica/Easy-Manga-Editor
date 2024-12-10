@@ -1,3 +1,4 @@
+import 'package:easy_manga_editor/core/utils/extensions/radius_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:easy_manga_editor/app/l10n/tr_keys.dart';
@@ -14,9 +15,9 @@ class ControlDrawer extends StatelessWidget {
         width: UIConstants.drawerWidth,
         decoration: BoxDecoration(
           color: Theme.of(context).drawerTheme.backgroundColor,
-          borderRadius: const BorderRadius.only(
-            topRight: Radius.circular(12),
-            bottomRight: Radius.circular(12),
+          borderRadius: BorderRadius.only(
+            topRight: Radius.circular(UIConstants.drawerWidth.r),
+            bottomRight: Radius.circular(UIConstants.drawerWidth.r),
           ),
           border: Border(
             right: BorderSide(
