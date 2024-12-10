@@ -174,14 +174,21 @@ class _ExtendScaffoldState extends State<ExtendScaffold>
               AnimatedBuilder(
                 animation: _leftController,
                 builder: (context, child) {
-                  return Transform.translate(
-                    offset: Offset(
-                      -widget.drawerWidth * (1 - _leftController.value),
-                      0,
-                    ),
-                    child: Opacity(
-                      opacity: _leftController.value,
-                      child: SafeArea(child: widget.leftDrawer!),
+                  return Align(
+                    alignment: Alignment.centerLeft,
+                    child: Transform.translate(
+                      offset: Offset(
+                        -widget.drawerWidth * (1 - _leftController.value),
+                        0,
+                      ),
+                      child: Opacity(
+                        opacity: _leftController.value,
+                        child: SizedBox(
+                          width: widget.drawerWidth,
+                          height: MediaQuery.of(context).size.height,
+                          child: SafeArea(child: widget.leftDrawer!),
+                        ),
+                      ),
                     ),
                   );
                 },
@@ -191,8 +198,8 @@ class _ExtendScaffoldState extends State<ExtendScaffold>
               AnimatedBuilder(
                 animation: _rightController,
                 builder: (context, child) {
-                  return Positioned(
-                    right: 0,
+                  return Align(
+                    alignment: Alignment.centerRight,
                     child: Transform.translate(
                       offset: Offset(
                         widget.drawerWidth * (1 - _rightController.value),
@@ -200,7 +207,11 @@ class _ExtendScaffoldState extends State<ExtendScaffold>
                       ),
                       child: Opacity(
                         opacity: _rightController.value,
-                        child: SafeArea(child: widget.rightDrawer!),
+                        child: SizedBox(
+                          width: widget.drawerWidth,
+                          height: MediaQuery.of(context).size.height,
+                          child: SafeArea(child: widget.rightDrawer!),
+                        ),
                       ),
                     ),
                   );

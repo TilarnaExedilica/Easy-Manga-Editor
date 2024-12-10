@@ -5,8 +5,8 @@ import 'package:easy_manga_editor/app/l10n/tr_keys.dart';
 import 'package:easy_manga_editor/shared/widgets/buttons/theme_button.dart';
 import 'package:easy_manga_editor/core/utils/constants/ui_constants.dart';
 
-class ControlDrawer extends StatelessWidget {
-  const ControlDrawer({super.key});
+class ToolsDrawer extends StatelessWidget {
+  const ToolsDrawer({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,11 +16,11 @@ class ControlDrawer extends StatelessWidget {
       decoration: BoxDecoration(
         color: Theme.of(context).drawerTheme.backgroundColor,
         borderRadius: const BorderRadius.only(
-          topRight: Radius.circular(AppDimensions.radius),
-          bottomRight: Radius.circular(AppDimensions.radius),
+          topLeft: Radius.circular(AppDimensions.radius),
+          bottomLeft: Radius.circular(AppDimensions.radius),
         ),
         border: Border(
-          right: BorderSide(
+          left: BorderSide(
             color: Theme.of(context).colorScheme.outline,
             width: AppDimensions.borderWidth,
           ),
