@@ -37,6 +37,10 @@ class AppButton extends StatelessWidget {
                 side: BorderSide(
                   color: backgroundColor ?? theme.colorScheme.primary,
                 ),
+                shape: RoundedRectangleBorder(
+                  borderRadius:
+                      BorderRadius.circular(AppDimensions.radiusSmall),
+                ),
               ),
               child: _buildChild(theme),
             )
@@ -45,6 +49,12 @@ class AppButton extends StatelessWidget {
               style: ElevatedButton.styleFrom(
                 backgroundColor: backgroundColor,
                 foregroundColor: textColor,
+                shape: RoundedRectangleBorder(
+                  borderRadius:
+                      BorderRadius.circular(AppDimensions.radiusSmall),
+                ),
+                elevation: 2,
+                shadowColor: theme.colorScheme.surface,
               ),
               child: _buildChild(theme),
             ),

@@ -1,4 +1,4 @@
-import 'package:easy_manga_editor/core/utils/extensions/radius_extension.dart';
+import 'package:easy_manga_editor/app/theme/styles/dimensions.dart';
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:easy_manga_editor/app/l10n/tr_keys.dart';
@@ -15,22 +15,22 @@ class ControlDrawer extends StatelessWidget {
         width: UIConstants.drawerWidth,
         decoration: BoxDecoration(
           color: Theme.of(context).drawerTheme.backgroundColor,
-          borderRadius: BorderRadius.only(
-            topRight: Radius.circular(UIConstants.drawerWidth.r),
-            bottomRight: Radius.circular(UIConstants.drawerWidth.r),
+          borderRadius: const BorderRadius.only(
+            topRight: Radius.circular(AppDimensions.radius),
+            bottomRight: Radius.circular(AppDimensions.radius),
           ),
           border: Border(
             right: BorderSide(
               color: Theme.of(context).colorScheme.outline,
-              width: UIConstants.border,
+              width: AppDimensions.borderWidth,
             ),
             top: BorderSide(
               color: Theme.of(context).colorScheme.outline,
-              width: UIConstants.border,
+              width: AppDimensions.borderWidth,
             ),
             bottom: BorderSide(
               color: Theme.of(context).colorScheme.outline,
-              width: UIConstants.border,
+              width: AppDimensions.borderWidth,
             ),
           ),
         ),
@@ -44,7 +44,7 @@ class ControlDrawer extends StatelessWidget {
                 border: Border(
                   bottom: BorderSide(
                     color: Theme.of(context).colorScheme.outline,
-                    width: UIConstants.border,
+                    width: AppDimensions.borderWidth,
                   ),
                 ),
               ),
@@ -74,7 +74,7 @@ class ControlDrawer extends StatelessWidget {
                 border: Border(
                   top: BorderSide(
                     color: Theme.of(context).colorScheme.outline,
-                    width: UIConstants.border,
+                    width: AppDimensions.borderWidth,
                   ),
                 ),
               ),

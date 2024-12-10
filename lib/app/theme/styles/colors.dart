@@ -28,4 +28,7 @@ class AppColors {
 
   static const secondaryContainerLight = Color(0xFFF8F9FA);
   static const secondaryContainerDark = Color(0xFF2D2E35);
+
+  static const dialogBackgroundLight = Color(0xFFFFFFFF);
+  static const dialogBackgroundDark = Color(0xFF141417);
 }

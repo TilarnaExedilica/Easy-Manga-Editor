@@ -1,4 +1,5 @@
 import 'package:easy_manga_editor/app/routes/app_router.dart';
+import 'package:easy_manga_editor/shared/widgets/buttons/app_button.dart';
 import 'package:easy_manga_editor/shared/widgets/dialogs/confirm_dialog.dart';
 import 'package:easy_manga_editor/shared/widgets/scaffold/extend_scaffold.dart';
 import 'package:flutter/material.dart';
@@ -17,14 +18,15 @@ class HomePage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            ElevatedButton(
+            AppButton(
+              text: 'Mở Studio',
               onPressed: () {
                 context.router.push(const StudioRoute());
               },
-              child: const Text('Mở Studio'),
             ),
             const SizedBox(height: 16),
-            ElevatedButton(
+            AppButton(
+              text: 'Test Popup',
               onPressed: () {
                 showDialog(
                   context: context,
@@ -34,7 +36,6 @@ class HomePage extends StatelessWidget {
                   ),
                 );
               },
-              child: const Text('Test Popup'),
             ),
           ],
         ),
