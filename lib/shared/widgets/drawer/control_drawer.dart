@@ -1,4 +1,5 @@
 import 'package:easy_manga_editor/app/theme/styles/dimensions.dart';
+import 'package:easy_manga_editor/shared/widgets/drawer/stack_tree.dart';
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:easy_manga_editor/app/l10n/tr_keys.dart';
@@ -58,6 +59,7 @@ class ControlDrawer extends StatelessWidget {
               ],
             ),
           ),
+          const StackTree(),
           // Main content
           const Expanded(
             child: SingleChildScrollView(

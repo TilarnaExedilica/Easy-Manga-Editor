@@ -4,6 +4,7 @@
 class TrKeys {
   static const String appName = 'appName';
   static const String home = 'home';
+  static const String studio = 'studio';
   static const String yearsAgo = 'yearsAgo';
   static const String monthsAgo = 'monthsAgo';
   static const String daysAgo = 'daysAgo';
