@@ -17,7 +17,7 @@ class AppColors {
   static const error = Color(0xFFDC3545);
   static const errorDark = Color(0xFFE53935);
 
-  static const drawerBackgroundLight = Color(0xFFF3F3F5);
+  static const drawerBackgroundLight = Color(0xFFF3F5F4);
   static const drawerBackgroundDark = Color(0xFF292930);
 
   static const surfaceContainerHighestLight = Color(0xFFE3E6EC);

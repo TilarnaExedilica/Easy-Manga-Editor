@@ -9,18 +9,53 @@ class ControlDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: UIConstants.drawerWidth,
-      color: Theme.of(context).drawerTheme.backgroundColor,
-      child: SafeArea(
+    return SafeArea(
+      child: Container(
+        width: UIConstants.drawerWidth,
+        decoration: BoxDecoration(
+          color: Theme.of(context).drawerTheme.backgroundColor,
+          borderRadius: const BorderRadius.only(
+            topRight: Radius.circular(12),
+            bottomRight: Radius.circular(12),
+          ),
+          border: Border(
+            right: BorderSide(
+              color: Theme.of(context).colorScheme.surfaceContainerHighest,
+              width: UIConstants.border,
+            ),
+            top: BorderSide(
+              color: Theme.of(context).colorScheme.surfaceContainerHighest,
+              width: UIConstants.border,
+            ),
+            bottom: BorderSide(
+              color: Theme.of(context).colorScheme.surfaceContainerHighest,
+              width: UIConstants.border,
+            ),
+          ),
+        ),
         child: Column(
           children: [
             // Header
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Text(
-                TrKeys.home.tr(),
-                style: Theme.of(context).textTheme.titleLarge,
+            Container(
+              width: double.infinity,
+              padding: const EdgeInsets.all(12.0),
+              decoration: BoxDecoration(
+                border: Border(
+                  bottom: BorderSide(
+                    color:
+                        Theme.of(context).colorScheme.surfaceContainerHighest,
+                    width: UIConstants.border,
+                  ),
+                ),
+              ),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    TrKeys.appName.tr(),
+                    style: Theme.of(context).textTheme.titleMedium,
+                  ),
+                ],
               ),
             ),
             // Main content
@@ -33,7 +68,17 @@ class ControlDrawer extends StatelessWidget {
             ),
             // Bottom controls
             Container(
-              padding: const EdgeInsets.all(16.0),
+              width: double.infinity,
+              padding: const EdgeInsets.all(12.0),
+              decoration: BoxDecoration(
+                border: Border(
+                  top: BorderSide(
+                    color:
+                        Theme.of(context).colorScheme.surfaceContainerHighest,
+                    width: UIConstants.border,
+                  ),
+                ),
+              ),
               child: const Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [

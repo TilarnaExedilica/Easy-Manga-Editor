@@ -24,6 +24,10 @@ class AppTheme {
       elevation: 0,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.zero,
+        side: BorderSide(
+          color: AppColors.primary,
+          width: 1.0,
+        ),
       ),
     ),
     pageTransitionsTheme: const PageTransitionsTheme(
@@ -53,6 +57,10 @@ class AppTheme {
       elevation: 0,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.zero,
+        side: BorderSide(
+          color: AppColors.primary,
+          width: 1.0,
+        ),
       ),
     ),
     pageTransitionsTheme: const PageTransitionsTheme(

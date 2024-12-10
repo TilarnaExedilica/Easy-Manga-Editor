@@ -98,6 +98,7 @@ class _ExtendScaffoldState extends State<ExtendScaffold>
   @override
   Widget build(BuildContext context) {
     return Material(
+      color: Theme.of(context).scaffoldBackgroundColor,
       child: GestureDetector(
         onHorizontalDragStart: _handleDragStart,
         onHorizontalDragUpdate: _handleDragUpdate,
