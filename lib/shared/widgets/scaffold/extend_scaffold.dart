@@ -62,27 +62,21 @@ class _ExtendScaffoldState extends State<ExtendScaffold>
     final delta = details.globalPosition.dx - _dragStartX!;
 
     if (delta > 0) {
-      // Xử lý drawer bên trái
       if (widget.leftDrawer != null && !_isRightDrawerOpen) {
         if (!_isLeftDrawerOpen) {
-          // Vuốt phải -> mở drawer trái
           _leftController.value = (delta / widget.drawerWidth).clamp(0.0, 1.0);
         }
       } else if (_isRightDrawerOpen) {
-        // Vuốt phải -> đóng drawer phải
         _rightController.value =
             (1 - delta / widget.drawerWidth).clamp(0.0, 1.0);
       }
     } else if (delta < 0) {
-      // Xử lý drawer bên phải
       if (widget.rightDrawer != null && !_isLeftDrawerOpen) {
         if (!_isRightDrawerOpen) {
-          // Vuốt trái -> mở drawer phải
           _rightController.value =
               (-delta / widget.drawerWidth).clamp(0.0, 1.0);
         }
       } else if (_isLeftDrawerOpen) {
-        // Vuốt trái -> đóng drawer trái
         _leftController.value =
             (1 + delta / widget.drawerWidth).clamp(0.0, 1.0);
       }
@@ -103,7 +97,6 @@ class _ExtendScaffoldState extends State<ExtendScaffold>
       final targetValue = _isRightDrawerOpen ? 1.0 : 0.0;
       _animateDrawer(_rightController, targetValue, velocity);
     } else {
-      // Xử lý mở drawer mới
       if (widget.leftDrawer != null && velocity > 200) {
         _isLeftDrawerOpen = true;
         _animateDrawer(_leftController, 1.0, velocity);
@@ -188,7 +181,7 @@ class _ExtendScaffoldState extends State<ExtendScaffold>
                     ),
                     child: Opacity(
                       opacity: _leftController.value,
-                      child: widget.leftDrawer,
+                      child: SafeArea(child: widget.leftDrawer!),
                     ),
                   );
                 },
@@ -207,7 +200,7 @@ class _ExtendScaffoldState extends State<ExtendScaffold>
                       ),
                       child: Opacity(
                         opacity: _rightController.value,
-                        child: widget.rightDrawer,
+                        child: SafeArea(child: widget.rightDrawer!),
                       ),
                     ),
                   );

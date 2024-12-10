@@ -10,83 +10,81 @@ class ControlDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Container(
-        width: UIConstants.drawerWidth,
-        decoration: BoxDecoration(
-          color: Theme.of(context).drawerTheme.backgroundColor,
-          borderRadius: const BorderRadius.only(
-            topRight: Radius.circular(AppDimensions.radius),
-            bottomRight: Radius.circular(AppDimensions.radius),
+    return Container(
+      width: UIConstants.drawerWidth,
+      decoration: BoxDecoration(
+        color: Theme.of(context).drawerTheme.backgroundColor,
+        borderRadius: const BorderRadius.only(
+          topRight: Radius.circular(AppDimensions.radius),
+          bottomRight: Radius.circular(AppDimensions.radius),
+        ),
+        border: Border(
+          right: BorderSide(
+            color: Theme.of(context).colorScheme.outline,
+            width: AppDimensions.borderWidth,
           ),
-          border: Border(
-            right: BorderSide(
-              color: Theme.of(context).colorScheme.outline,
-              width: AppDimensions.borderWidth,
-            ),
-            top: BorderSide(
-              color: Theme.of(context).colorScheme.outline,
-              width: AppDimensions.borderWidth,
-            ),
-            bottom: BorderSide(
-              color: Theme.of(context).colorScheme.outline,
-              width: AppDimensions.borderWidth,
-            ),
+          top: BorderSide(
+            color: Theme.of(context).colorScheme.outline,
+            width: AppDimensions.borderWidth,
+          ),
+          bottom: BorderSide(
+            color: Theme.of(context).colorScheme.outline,
+            width: AppDimensions.borderWidth,
           ),
         ),
-        child: Column(
-          children: [
-            // Header
-            Container(
-              width: double.infinity,
-              padding: const EdgeInsets.all(12.0),
-              decoration: BoxDecoration(
-                border: Border(
-                  bottom: BorderSide(
-                    color: Theme.of(context).colorScheme.outline,
-                    width: AppDimensions.borderWidth,
-                  ),
+      ),
+      child: Column(
+        children: [
+          // Header
+          Container(
+            width: double.infinity,
+            padding: const EdgeInsets.all(12.0),
+            decoration: BoxDecoration(
+              border: Border(
+                bottom: BorderSide(
+                  color: Theme.of(context).colorScheme.outline,
+                  width: AppDimensions.borderWidth,
                 ),
               ),
+            ),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  TrKeys.appName.tr(),
+                  style: Theme.of(context).textTheme.titleMedium,
+                ),
+              ],
+            ),
+          ),
+          // Main content
+          const Expanded(
+            child: SingleChildScrollView(
               child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Text(
-                    TrKeys.appName.tr(),
-                    style: Theme.of(context).textTheme.titleMedium,
-                  ),
-                ],
+                children: [],
               ),
             ),
-            // Main content
-            const Expanded(
-              child: SingleChildScrollView(
-                child: Column(
-                  children: [],
+          ),
+          // Bottom controls
+          Container(
+            width: double.infinity,
+            padding: const EdgeInsets.all(12.0),
+            decoration: BoxDecoration(
+              border: Border(
+                top: BorderSide(
+                  color: Theme.of(context).colorScheme.outline,
+                  width: AppDimensions.borderWidth,
                 ),
               ),
             ),
-            // Bottom controls
-            Container(
-              width: double.infinity,
-              padding: const EdgeInsets.all(12.0),
-              decoration: BoxDecoration(
-                border: Border(
-                  top: BorderSide(
-                    color: Theme.of(context).colorScheme.outline,
-                    width: AppDimensions.borderWidth,
-                  ),
-                ),
-              ),
-              child: const Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  ThemeButton(),
-                ],
-              ),
+            child: const Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                ThemeButton(),
+              ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
