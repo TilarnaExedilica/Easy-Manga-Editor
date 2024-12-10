@@ -16,4 +16,7 @@ class AppConstants {
 
   // Animation
   static const Duration defaultAnimationDuration = Duration(milliseconds: 300);
+
+  // Drawer sensitivity
+  static const double drawerSensitivity = 60.0;
 }

@@ -1,3 +1,4 @@
+import 'package:easy_manga_editor/core/utils/constants/app_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:easy_manga_editor/core/utils/constants/ui_constants.dart';
 
@@ -60,11 +61,15 @@ class _ExtendScaffoldState extends State<ExtendScaffold>
     if (!widget.enableGesture || _dragStartX == null) return;
 
     final delta = details.globalPosition.dx - _dragStartX!;
+    const minDragDistance = AppConstants.drawerSensitivity;
+
+    if (delta.abs() < minDragDistance) return;
 
     if (delta > 0) {
       if (widget.leftDrawer != null && !_isRightDrawerOpen) {
         if (!_isLeftDrawerOpen) {
-          _leftController.value = (delta / widget.drawerWidth).clamp(0.0, 1.0);
+          _leftController.value =
+              ((delta - minDragDistance) / widget.drawerWidth).clamp(0.0, 1.0);
         }
       } else if (_isRightDrawerOpen) {
         _rightController.value =
@@ -74,7 +79,7 @@ class _ExtendScaffoldState extends State<ExtendScaffold>
       if (widget.rightDrawer != null && !_isLeftDrawerOpen) {
         if (!_isRightDrawerOpen) {
           _rightController.value =
-              (-delta / widget.drawerWidth).clamp(0.0, 1.0);
+              ((-delta - minDragDistance) / widget.drawerWidth).clamp(0.0, 1.0);
         }
       } else if (_isLeftDrawerOpen) {
         _leftController.value =
