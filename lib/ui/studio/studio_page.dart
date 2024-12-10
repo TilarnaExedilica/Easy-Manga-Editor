@@ -1,11 +1,8 @@
-import 'package:easy_localization/easy_localization.dart';
+import 'package:easy_manga_editor/shared/widgets/drawer/control_drawer.dart';
+import 'package:easy_manga_editor/shared/widgets/drawer/tools_drawer.dart';
+import 'package:easy_manga_editor/shared/widgets/scaffold/extend_scaffold.dart';
 import 'package:flutter/material.dart';
 import 'package:auto_route/auto_route.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:easy_manga_editor/app/l10n/tr_keys.dart';
-import 'package:easy_manga_editor/app/theme/bloc/theme_bloc.dart';
-import 'package:easy_manga_editor/app/theme/bloc/theme_event.dart';
-import 'package:easy_manga_editor/app/theme/bloc/theme_state.dart';
 import 'package:google_mlkit_text_recognition/google_mlkit_text_recognition.dart';
 import 'package:google_mlkit_translation/google_mlkit_translation.dart';
 import 'dart:async';
@@ -245,32 +242,9 @@ class _StudioPageState extends State<StudioPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(TrKeys.home.tr()),
-        actions: [
-          BlocBuilder<ThemeBloc, ThemeState>(
-            builder: (context, state) {
-              return IconButton(
-                icon: Icon(
-                  state.themeMode == ThemeMode.dark
-                      ? Icons.light_mode
-                      : Icons.dark_mode,
-                ),
-                onPressed: () {
-                  context.read<ThemeBloc>().add(
-                        ChangeTheme(
-                          state.themeMode == ThemeMode.dark
-                              ? ThemeMode.light
-                              : ThemeMode.dark,
-                        ),
-                      );
-                },
-              );
-            },
-          ),
-        ],
-      ),
+    return ExtendScaffold(
+      leftDrawer: const ControlDrawer(),
+      rightDrawer: const ToolsDrawer(),
       body: SingleChildScrollView(
         child: Column(
           children: [

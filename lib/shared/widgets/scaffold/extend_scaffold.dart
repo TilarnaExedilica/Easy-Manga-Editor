@@ -164,7 +164,12 @@ class _ExtendScaffoldState extends State<ExtendScaffold>
                   child: Container(
                     color: widget.backgroundColor ??
                         Theme.of(context).scaffoldBackgroundColor,
-                    child: widget.body,
+                    child: SafeArea(
+                      child: Padding(
+                        padding: const EdgeInsets.all(2),
+                        child: widget.body,
+                      ),
+                    ),
                   ),
                 );
               },

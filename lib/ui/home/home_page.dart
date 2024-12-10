@@ -1,7 +1,6 @@
 import 'package:easy_manga_editor/app/routes/app_router.dart';
 import 'package:easy_manga_editor/shared/widgets/buttons/app_button.dart';
 import 'package:easy_manga_editor/shared/widgets/dialogs/confirm_dialog.dart';
-import 'package:easy_manga_editor/shared/widgets/drawer/tools_drawer.dart';
 import 'package:easy_manga_editor/shared/widgets/scaffold/extend_scaffold.dart';
 import 'package:flutter/material.dart';
 import 'package:auto_route/auto_route.dart';
@@ -15,7 +14,6 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return ExtendScaffold(
       leftDrawer: const ControlDrawer(),
-      rightDrawer: const ToolsDrawer(),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
