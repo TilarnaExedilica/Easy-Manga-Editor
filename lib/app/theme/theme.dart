@@ -15,6 +15,7 @@ class AppTheme {
       surfaceContainerHighest: AppColors.surfaceContainerHighestLight,
       secondaryContainer: AppColors.secondaryContainerLight,
       error: AppColors.error,
+      outline: AppColors.outlineLight,
     ),
     scaffoldBackgroundColor: AppColors.backgroundLight,
     fontFamily: 'LexendDeca',
@@ -22,13 +23,6 @@ class AppTheme {
       backgroundColor: AppColors.drawerBackgroundLight,
       width: UIConstants.drawerWidth,
       elevation: 0,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.zero,
-        side: BorderSide(
-          color: AppColors.primary,
-          width: 1.0,
-        ),
-      ),
     ),
     pageTransitionsTheme: const PageTransitionsTheme(
       builders: {
@@ -48,6 +42,7 @@ class AppTheme {
       surfaceContainerHighest: AppColors.surfaceContainerHighestDark,
       secondaryContainer: AppColors.secondaryContainerDark,
       error: AppColors.errorDark,
+      outline: AppColors.outlineDark,
     ),
     scaffoldBackgroundColor: AppColors.backgroundDark,
     fontFamily: 'LexendDeca',
@@ -55,13 +50,6 @@ class AppTheme {
       backgroundColor: AppColors.drawerBackgroundDark,
       width: UIConstants.drawerWidth,
       elevation: 0,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.zero,
-        side: BorderSide(
-          color: AppColors.primary,
-          width: 1.0,
-        ),
-      ),
     ),
     pageTransitionsTheme: const PageTransitionsTheme(
       builders: {

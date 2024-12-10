@@ -23,6 +23,9 @@ class AppColors {
   static const surfaceContainerHighestLight = Color(0xFFE3E6EC);
   static const surfaceContainerHighestDark = Color(0xFF1E1F24);
 
+  static const outlineLight = Color(0xFFE5E7EB);
+  static const outlineDark = Color.fromARGB(255, 94, 95, 99);
+
   static const secondaryContainerLight = Color(0xFFF8F9FA);
   static const secondaryContainerDark = Color(0xFF2D2E35);
 }

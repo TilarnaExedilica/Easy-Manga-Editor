@@ -21,15 +21,15 @@ class ControlDrawer extends StatelessWidget {
           ),
           border: Border(
             right: BorderSide(
-              color: Theme.of(context).colorScheme.surfaceContainerHighest,
+              color: Theme.of(context).colorScheme.outline,
               width: UIConstants.border,
             ),
             top: BorderSide(
-              color: Theme.of(context).colorScheme.surfaceContainerHighest,
+              color: Theme.of(context).colorScheme.outline,
               width: UIConstants.border,
             ),
             bottom: BorderSide(
-              color: Theme.of(context).colorScheme.surfaceContainerHighest,
+              color: Theme.of(context).colorScheme.outline,
               width: UIConstants.border,
             ),
           ),
@@ -43,8 +43,7 @@ class ControlDrawer extends StatelessWidget {
               decoration: BoxDecoration(
                 border: Border(
                   bottom: BorderSide(
-                    color:
-                        Theme.of(context).colorScheme.surfaceContainerHighest,
+                    color: Theme.of(context).colorScheme.outline,
                     width: UIConstants.border,
                   ),
                 ),
@@ -74,8 +73,7 @@ class ControlDrawer extends StatelessWidget {
               decoration: BoxDecoration(
                 border: Border(
                   top: BorderSide(
-                    color:
-                        Theme.of(context).colorScheme.surfaceContainerHighest,
+                    color: Theme.of(context).colorScheme.outline,
                     width: UIConstants.border,
                   ),
                 ),
