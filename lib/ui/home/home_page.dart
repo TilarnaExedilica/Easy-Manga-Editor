@@ -1,6 +1,8 @@
 import 'package:easy_manga_editor/app/routes/app_router.dart';
+import 'package:easy_manga_editor/app/theme/styles/dimensions.dart';
+import 'package:easy_manga_editor/app/theme/styles/text_styles.dart';
 import 'package:easy_manga_editor/shared/widgets/buttons/app_button.dart';
-import 'package:easy_manga_editor/shared/widgets/dialogs/confirm_dialog.dart';
+import 'package:easy_manga_editor/shared/widgets/dialogs/custom_dialog.dart';
 import 'package:easy_manga_editor/shared/widgets/scaffold/extend_scaffold.dart';
 import 'package:flutter/material.dart';
 import 'package:auto_route/auto_route.dart';
@@ -28,13 +30,19 @@ class HomePage extends StatelessWidget {
             AppButton(
               text: 'Test Popup',
               onPressed: () {
-                showDialog(
+                CustomDialog.show(
                   context: context,
-                  builder: (context) => const ConfirmDialog(
-                    title: 'Thoát',
-                    message:
-                        'Bạn có muốn thoát không? Các thay đổi sẽ không được lưu',
-                  ),
+                  children: [
+                    const Text('Thoát', style: AppTextStyles.h3),
+                    const SizedBox(height: AppDimensions.spacingSmall),
+                    const Text('Bạn có muốn thoát không?',
+                        style: AppTextStyles.bodyMedium),
+                    const Text('Dữ liệu sẽ được lưu lại',
+                        style: AppTextStyles.bodyMedium),
+                    const SizedBox(height: AppDimensions.spacingLarge),
+                  ],
+                  onConfirm: () {},
+                  onCancel: () {},
                 );
               },
             ),
