@@ -7,27 +7,45 @@ import 'package:easy_manga_editor/shared/widgets/dialogs/custom_dialog.dart';
 class ProjectTree extends StatelessWidget {
   const ProjectTree({super.key});
 
-  Widget _buildFolderList(Directory directory) {
+  Widget _buildFolderStructure(Directory directory) {
     final folders = directory
         .listSync()
         .whereType<Directory>()
         .map((dir) => dir.path.split('/').last)
         .toList();
 
-    return folders.isEmpty
-        ? const Center(
-            child: Text('Không có thư mục nào trong Easy Manga Editor.'))
-        : ListView.builder(
-            shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
-            itemCount: folders.length,
-            itemBuilder: (context, index) {
-              return ListTile(
-                leading: const Icon(Icons.folder),
-                title: Text(folders[index]),
-              );
-            },
-          );
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const Padding(
+          padding: EdgeInsets.all(8.0),
+          child: Row(
+            children: [
+              Icon(Icons.folder),
+              SizedBox(width: 8),
+              Text('Easy Manga Editor'),
+            ],
+          ),
+        ),
+        if (folders.isEmpty)
+          const Padding(
+            padding: EdgeInsets.only(left: 32.0),
+            child: Text('(Chưa có thư mục con)'),
+          )
+        else
+          ...folders.map((folder) => Padding(
+                padding: const EdgeInsets.only(left: 32.0),
+                child: Row(
+                  children: [
+                    const Text('└── '),
+                    const Icon(Icons.folder, size: 20),
+                    const SizedBox(width: 8),
+                    Text(folder),
+                  ],
+                ),
+              )),
+      ],
+    );
   }
 
   void _showPermissionDialog(BuildContext context) {
@@ -39,7 +57,7 @@ class ProjectTree extends StatelessWidget {
             'Ứng dụng cần quyền truy cập bộ nhớ để tạo và quản lý thư mục dự án.'),
       ],
       onConfirm: () {
-        context.read<PermissionBloc>().add(CheckPermission());
+        context.read<PermissionBloc>().add(RequestPermission());
         Navigator.pop(context);
       },
       onCancel: () {
@@ -58,18 +76,9 @@ class ProjectTree extends StatelessWidget {
             CustomDialog.show(
               context: context,
               title: 'Thông Báo',
-              children: [
-                Text(state.message!),
-              ],
-              onConfirm: () {
-                Navigator.pop(context);
-                if (state.isPermissionGranted && !state.isFolderCreated) {
-                  context.read<PermissionBloc>().add(CreateFolder());
-                }
-              },
-              onCancel: () {
-                Navigator.pop(context);
-              },
+              children: [Text(state.message!)],
+              onConfirm: () => Navigator.pop(context),
+              onCancel: () => Navigator.pop(context),
             );
           }
         },
@@ -83,20 +92,20 @@ class ProjectTree extends StatelessWidget {
             );
           }
 
-          final directory = Directory('${state.storagePath}/Easy Manga Editor');
+          if (!state.isFolderCreated || state.folderPath == null) {
+            return const Center(child: CircularProgressIndicator());
+          }
 
+          final directory = Directory(state.folderPath!);
           if (!directory.existsSync()) {
-            return Center(
-              child: ElevatedButton(
-                onPressed: () {
-                  context.read<PermissionBloc>().add(CreateFolder());
-                },
-                child: const Text('Tạo Thư Mục Easy Manga Editor'),
-              ),
+            return const Center(
+              child: Text('Không tìm thấy thư mục Easy Manga Editor'),
             );
           }
 
-          return _buildFolderList(directory);
+          return SingleChildScrollView(
+            child: _buildFolderStructure(directory),
+          );
         },
       ),
     );
