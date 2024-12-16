@@ -13,4 +13,11 @@ class TrKeys {
   static const String justNow = 'justNow';
   static const String cancel = 'cancel';
   static const String confirm = 'confirm';
+  static const String collections = 'collections';
+  static const String noSubfolders = 'noSubfolders';
+  static const String accessPermission = 'accessPermission';
+  static const String permissionMessage = 'permissionMessage';
+  static const String notification = 'notification';
+  static const String managePermissions = 'managePermissions';
+  static const String folderNotFound = 'folderNotFound';
 }

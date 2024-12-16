@@ -1,3 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
+import 'package:easy_manga_editor/app/l10n/tr_keys.dart';
+import 'package:easy_manga_editor/shared/widgets/buttons/app_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:easy_manga_editor/features/permission/permission_bloc.dart';
@@ -17,29 +20,27 @@ class ProjectTree extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Padding(
-          padding: EdgeInsets.all(8.0),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
           child: Row(
             children: [
-              Icon(Icons.folder),
-              SizedBox(width: 8),
-              Text('Easy Manga Editor'),
+              const SizedBox(width: 4),
+              Text(TrKeys.collections.tr()),
             ],
           ),
         ),
         if (folders.isEmpty)
-          const Padding(
-            padding: EdgeInsets.only(left: 32.0),
-            child: Text('(Chưa có thư mục con)'),
+          Padding(
+            padding: const EdgeInsets.only(left: 10.0),
+            child: Text(TrKeys.noSubfolders.tr()),
           )
         else
           ...folders.map((folder) => Padding(
-                padding: const EdgeInsets.only(left: 32.0),
+                padding: const EdgeInsets.only(left: 10.0),
                 child: Row(
                   children: [
-                    const Text('└── '),
-                    const Icon(Icons.folder, size: 20),
-                    const SizedBox(width: 8),
+                    const Text('├ '),
+                    const SizedBox(width: 4),
                     Text(folder),
                   ],
                 ),
@@ -51,18 +52,14 @@ class ProjectTree extends StatelessWidget {
   void _showPermissionDialog(BuildContext context) {
     CustomDialog.show(
       context: context,
-      title: 'Cấp Quyền Truy Cập',
-      children: const [
-        Text(
-            'Ứng dụng cần quyền truy cập bộ nhớ để tạo và quản lý thư mục dự án.'),
+      title: TrKeys.accessPermission.tr(),
+      children: [
+        Text(TrKeys.permissionMessage.tr()),
       ],
       onConfirm: () {
         context.read<PermissionBloc>().add(RequestPermission());
-        Navigator.pop(context);
       },
-      onCancel: () {
-        Navigator.pop(context);
-      },
+      onCancel: () {},
     );
   }
 
@@ -75,19 +72,22 @@ class ProjectTree extends StatelessWidget {
           if (state.message != null) {
             CustomDialog.show(
               context: context,
-              title: 'Thông Báo',
+              title: TrKeys.notification.tr(),
               children: [Text(state.message!)],
-              onConfirm: () => Navigator.pop(context),
-              onCancel: () => Navigator.pop(context),
+              cancelText: TrKeys.confirm.tr(),
+              onCancel: () {},
             );
           }
         },
         builder: (context, state) {
           if (!state.isPermissionGranted) {
             return Center(
-              child: ElevatedButton(
-                onPressed: () => _showPermissionDialog(context),
-                child: const Text('Cấp Quyền Truy Cập'),
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: AppButton(
+                  onPressed: () => _showPermissionDialog(context),
+                  text: TrKeys.managePermissions.tr(),
+                ),
               ),
             );
           }
@@ -98,8 +98,8 @@ class ProjectTree extends StatelessWidget {
 
           final directory = Directory(state.folderPath!);
           if (!directory.existsSync()) {
-            return const Center(
-              child: Text('Không tìm thấy thư mục Easy Manga Editor'),
+            return Center(
+              child: Text(TrKeys.folderNotFound.tr()),
             );
           }
 

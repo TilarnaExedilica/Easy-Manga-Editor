@@ -9,5 +9,12 @@
   "minutesAgo": "{} phút trước",
   "justNow": "Vừa xong",
   "cancel": "Hủy",
-  "confirm": "Xác nhận"
+  "confirm": "Xác nhận",
+  "collections": "Bộ sưu tập",
+  "noSubfolders": "(Chưa có thư mục con)",
+  "accessPermission": "Cấp Quyền Truy Cập",
+  "permissionMessage": "Ứng dụng cần quyền truy cập bộ nhớ để tạo và quản lý thư mục dự án.",
+  "notification": "Thông Báo",
+  "managePermissions": "Quản lý quyền",
+  "folderNotFound": "Không tìm thấy thư mục Easy Manga Editor"
 }
