@@ -1,11 +1,13 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:easy_manga_editor/app/l10n/tr_keys.dart';
 import 'package:easy_manga_editor/shared/widgets/buttons/app_button.dart';
+import 'package:easy_manga_editor/shared/widgets/loading/loading_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:easy_manga_editor/features/permission/permission_bloc.dart';
 import 'dart:io';
 import 'package:easy_manga_editor/shared/widgets/dialogs/custom_dialog.dart';
+import 'package:easy_manga_editor/app/theme/styles/dimensions.dart';
 
 class ProjectTree extends StatelessWidget {
   const ProjectTree({super.key});
@@ -20,31 +22,25 @@ class ProjectTree extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Row(
-            children: [
-              const SizedBox(width: 4),
-              Text(TrKeys.collections.tr()),
-            ],
-          ),
-        ),
         if (folders.isEmpty)
           Padding(
-            padding: const EdgeInsets.only(left: 10.0),
+            padding: const EdgeInsets.only(left: AppDimensions.treeIndentation),
             child: Text(TrKeys.noSubfolders.tr()),
           )
         else
-          ...folders.map((folder) => Padding(
-                padding: const EdgeInsets.only(left: 10.0),
-                child: Row(
-                  children: [
-                    const Text('├ '),
-                    const SizedBox(width: 4),
-                    Text(folder),
-                  ],
-                ),
-              )),
+          ...folders.map(
+            (folder) => Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: AppDimensions.treeItemPadding,
+                vertical: AppDimensions.treeItemSpacing,
+              ),
+              child: AppButton(
+                onPressed: () {},
+                isExpand: true,
+                text: folder,
+              ),
+            ),
+          ),
       ],
     );
   }
@@ -83,7 +79,7 @@ class ProjectTree extends StatelessWidget {
           if (!state.isPermissionGranted) {
             return Center(
               child: Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(AppDimensions.treeButtonPadding),
                 child: AppButton(
                   onPressed: () => _showPermissionDialog(context),
                   text: TrKeys.managePermissions.tr(),
@@ -93,7 +89,13 @@ class ProjectTree extends StatelessWidget {
           }
 
           if (!state.isFolderCreated || state.folderPath == null) {
-            return const Center(child: CircularProgressIndicator());
+            return const Center(
+              child: SizedBox(
+                width: AppDimensions.treeProgressSize,
+                height: AppDimensions.treeProgressSize,
+                child: LoadingIndicator(),
+              ),
+            );
           }
 
           final directory = Directory(state.folderPath!);

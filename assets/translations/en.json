@@ -20,5 +20,7 @@
   "storagePermissionRequired": "Storage management permission is required to create folders",
   "permissionDenied": "Permission denied",
   "folderCreationError": "Cannot create folder: No suitable path found",
-  "folderError": "Error creating folder: {}"
+  "folderError": "Error creating folder: {}",
+  "controlDrawerTitle": "Control",
+  "toolDrawerTitle": "Tools"
 }

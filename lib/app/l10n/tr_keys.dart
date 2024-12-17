@@ -24,4 +24,6 @@ class TrKeys {
   static const String permissionDenied = 'permissionDenied';
   static const String folderCreationError = 'folderCreationError';
   static const String folderError = 'folderError';
+  static const String controlDrawerTitle = 'controlDrawerTitle';
+  static const String toolDrawerTitle = 'toolDrawerTitle';
 }

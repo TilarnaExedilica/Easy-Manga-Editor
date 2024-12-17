@@ -41,4 +41,12 @@ class AppDimensions {
   static const double borderWidth = 1.5;
   static const double borderWidthThin = 1.0;
   static const double borderWidthThick = 2.0;
+
+  // Tree View Dimensions
+  static const double treeIndentation = 10.0;
+  static const double treeItemSpacing = 4.0;
+  static const double treeItemPadding = 8.0;
+  static const double treeIconSize = 16.0;
+  static const double treeButtonPadding = 8.0;
+  static const double treeProgressSize = 24.0;
 }

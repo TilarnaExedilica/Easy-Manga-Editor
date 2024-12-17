@@ -52,7 +52,7 @@ class ToolsDrawer extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
-                  TrKeys.appName.tr(),
+                  TrKeys.toolDrawerTitle.tr(),
                   style: Theme.of(context).textTheme.titleMedium,
                 ),
               ],

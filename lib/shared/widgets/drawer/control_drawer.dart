@@ -54,7 +54,7 @@ class ControlDrawer extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
-                  TrKeys.appName.tr(),
+                  TrKeys.controlDrawerTitle.tr(),
                   style: Theme.of(context).textTheme.titleMedium,
                 ),
               ],

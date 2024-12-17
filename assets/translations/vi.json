@@ -20,5 +20,7 @@
   "storagePermissionRequired": "Cần cấp quyền quản lý bộ nhớ để tạo thư mục",
   "permissionDenied": "Quyền truy cập bị từ chối",
   "folderCreationError": "Không thể tạo thư mục: Không tìm thấy đường dẫn phù hợp",
-  "folderError": "Lỗi khi tạo thư mục: {}"
+  "folderError": "Lỗi khi tạo thư mục: {}",
+  "controlDrawerTitle": "Điều khiển",
+  "toolDrawerTitle": "Công cụ"
 }
