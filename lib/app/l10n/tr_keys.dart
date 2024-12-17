@@ -20,4 +20,8 @@ class TrKeys {
   static const String notification = 'notification';
   static const String managePermissions = 'managePermissions';
   static const String folderNotFound = 'folderNotFound';
+  static const String storagePermissionRequired = 'storagePermissionRequired';
+  static const String permissionDenied = 'permissionDenied';
+  static const String folderCreationError = 'folderCreationError';
+  static const String folderError = 'folderError';
 }

@@ -2,6 +2,7 @@ class AppDimensions {
   // Padding & Margin
   static const double padding = 16.0;
   static const double paddingSmall = 8.0;
+  static const double paddingExtraSmall = 4.0;
   static const double paddingLarge = 24.0;
   static const double margin = 16.0;
   static const double marginSmall = 8.0;

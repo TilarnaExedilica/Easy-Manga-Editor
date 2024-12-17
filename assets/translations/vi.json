@@ -16,5 +16,9 @@
   "permissionMessage": "Ứng dụng cần quyền truy cập bộ nhớ để tạo và quản lý thư mục dự án.",
   "notification": "Thông Báo",
   "managePermissions": "Quản lý quyền",
-  "folderNotFound": "Không tìm thấy thư mục Easy Manga Editor"
+  "folderNotFound": "Không tìm thấy thư mục Easy Manga Editor",
+  "storagePermissionRequired": "Cần cấp quyền quản lý bộ nhớ để tạo thư mục",
+  "permissionDenied": "Quyền truy cập bị từ chối",
+  "folderCreationError": "Không thể tạo thư mục: Không tìm thấy đường dẫn phù hợp",
+  "folderError": "Lỗi khi tạo thư mục: {}"
 }

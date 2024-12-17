@@ -2,6 +2,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:path_provider/path_provider.dart';
 import 'dart:io';
+import 'package:easy_localization/easy_localization.dart';
+import 'package:easy_manga_editor/app/l10n/tr_keys.dart';
 
 class PermissionBloc extends Bloc<PermissionEvent, PermissionState> {
   PermissionBloc() : super(const PermissionState()) {
@@ -35,7 +37,7 @@ class PermissionBloc extends Bloc<PermissionEvent, PermissionState> {
       if (!status.isGranted) {
         emit(state.copyWith(
           isPermissionGranted: false,
-          message: 'Cần cấp quyền quản lý bộ nhớ để tạo thư mục',
+          message: TrKeys.storagePermissionRequired.tr(),
         ));
         return;
       }
@@ -48,7 +50,7 @@ class PermissionBloc extends Bloc<PermissionEvent, PermissionState> {
     } else {
       emit(state.copyWith(
         isPermissionGranted: false,
-        message: 'Quyền truy cập bị từ chối',
+        message: TrKeys.permissionDenied.tr(),
       ));
     }
   }
@@ -78,11 +80,12 @@ class PermissionBloc extends Bloc<PermissionEvent, PermissionState> {
         ));
       } else {
         emit(state.copyWith(
-          message: 'Không thể tạo thư mục: Không tìm thấy đường dẫn phù hợp',
+          message: TrKeys.folderCreationError.tr(),
         ));
       }
     } catch (e) {
-      emit(state.copyWith(message: 'Lỗi khi tạo thư mục: $e'));
+      emit(state.copyWith(
+          message: TrKeys.folderError.tr().replaceAll('{}', e.toString())));
     }
   }
 

@@ -15,6 +15,10 @@
   "accessPermission": "Access Permission",
   "permissionMessage": "The app needs storage access permission to create and manage project folders.",
   "notification": "Notification",
-  "managePermissions": "Manage permissions",
-  "folderNotFound": "Easy Manga Editor folder not found"
+  "managePermissions": "Permissions",
+  "folderNotFound": "Easy Manga Editor folder not found",
+  "storagePermissionRequired": "Storage management permission is required to create folders",
+  "permissionDenied": "Permission denied",
+  "folderCreationError": "Cannot create folder: No suitable path found",
+  "folderError": "Error creating folder: {}"
 }
