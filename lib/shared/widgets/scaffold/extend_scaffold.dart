@@ -8,6 +8,7 @@ class ExtendScaffold extends StatefulWidget {
   final Widget? rightDrawer;
   final double drawerWidth;
   final Color? backgroundColor;
+  final Color? nativeColor;
   final bool enableGesture;
 
   const ExtendScaffold({
@@ -17,6 +18,7 @@ class ExtendScaffold extends StatefulWidget {
     this.rightDrawer,
     this.drawerWidth = UIConstants.drawerWidth,
     this.backgroundColor,
+    this.nativeColor,
     this.enableGesture = true,
   });
 
@@ -147,7 +149,7 @@ class _ExtendScaffoldState extends State<ExtendScaffold>
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: Theme.of(context).scaffoldBackgroundColor,
+      color: widget.nativeColor ?? Theme.of(context).scaffoldBackgroundColor,
       child: GestureDetector(
         onHorizontalDragStart: _handleDragStart,
         onHorizontalDragUpdate: _handleDragUpdate,
