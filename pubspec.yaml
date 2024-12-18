@@ -38,7 +38,6 @@ dependencies:
   # Utils
   logger: ^2.5.0
   package_info_plus: ^8.1.1
-  flutter_native_splash: ^2.4.3
   system_theme: ^3.1.2
 
   # Code Generation
@@ -59,9 +58,14 @@ dependencies:
   permission_handler: ^11.3.1
   device_info_plus: ^11.2.0
 
+  #native
+  rename_app: ^1.6.1
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
+  flutter_native_splash: ^2.4.1
 
   # Linting
   flutter_lints: ^4.0.0
@@ -73,12 +77,26 @@ dev_dependencies:
   injectable_generator: ^2.6.2
   freezed: ^2.5.7
 
+flutter_native_splash:
+  image: assets/images/logo.png
+  image_dark: assets/images/logo.png
+  color: "#468cbf"
+  color_dark: "#468cbf"
+  android: true
+  ios: false
+  web: false
+  android_12:
+    color: "#468cbf"
+    color_dark: "#468cbf"
+
 flutter:
   uses-material-design: true
 
   assets:
     - assets/fonts/
     - assets/translations/
+    - assets/images/
+    - assets/images/logo.png
 
   fonts:
     - family: broken
