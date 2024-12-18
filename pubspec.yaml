@@ -60,6 +60,7 @@ dependencies:
 
   #native
   rename_app: ^1.6.1
+  icons_launcher: ^3.0.0
 
 dev_dependencies:
   flutter_test:
@@ -101,6 +102,8 @@ flutter:
     - assets/translations/
     - assets/images/
     - assets/images/logo.png
+    - assets/images/logo_app.png
+    - assets/images/logo_tinted.png
 
   fonts:
     - family: broken
