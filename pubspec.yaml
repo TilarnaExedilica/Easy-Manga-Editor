@@ -80,14 +80,18 @@ dev_dependencies:
 flutter_native_splash:
   image: assets/images/logo.png
   image_dark: assets/images/logo.png
-  color: "#468cbf"
-  color_dark: "#468cbf"
+  color: "#6989b2"
+  color_dark: "#6989b2"
   android: true
   ios: false
   web: false
+
   android_12:
-    color: "#468cbf"
-    color_dark: "#468cbf"
+    image: assets/images/logo.png
+    icon_background_color: "#6989b2"
+    image_dark: assets/images/logo.png
+    icon_background_color_dark: "#6989b2"
+  android_gravity: center
 
 flutter:
   uses-material-design: true
