@@ -1,5 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:easy_manga_editor/app/l10n/tr_keys.dart';
+import 'package:easy_manga_editor/app/tr/tr_keys.dart';
 
 extension DateTimeExtensions on DateTime {
   bool isSameDay(DateTime other) {

@@ -3,7 +3,7 @@ import 'package:permission_handler/permission_handler.dart';
 import 'package:path_provider/path_provider.dart';
 import 'dart:io';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:easy_manga_editor/app/l10n/tr_keys.dart';
+import 'package:easy_manga_editor/app/tr/tr_keys.dart';
 
 class PermissionBloc extends Bloc<PermissionEvent, PermissionState> {
   PermissionBloc() : super(const PermissionState()) {

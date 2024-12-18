@@ -3,7 +3,7 @@ import 'package:easy_manga_editor/shared/widgets/drawer/project_tree.dart';
 import 'package:easy_manga_editor/shared/widgets/drawer/stack_tree.dart';
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:easy_manga_editor/app/l10n/tr_keys.dart';
+import 'package:easy_manga_editor/app/tr/tr_keys.dart';
 import 'package:easy_manga_editor/shared/widgets/buttons/theme_button.dart';
 import 'package:easy_manga_editor/core/utils/constants/ui_constants.dart';
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:easy_manga_editor/app/l10n/tr_keys.dart';
+import 'package:easy_manga_editor/app/tr/tr_keys.dart';
 import 'package:easy_manga_editor/shared/widgets/buttons/app_button.dart';
 import 'package:easy_manga_editor/app/theme/styles/dimensions.dart';
 

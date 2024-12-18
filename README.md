@@ -54,6 +54,12 @@ lib/
 dart tools/generate_tr_keys.dart
 ```
 
+- Generate resource keys
+
+```bash
+dart tools/generate_resource_keys.dart
+```
+
 - Generate code
 
 ```bash

@@ -1,9 +1,10 @@
+import 'package:easy_localization/easy_localization.dart';
+import 'package:easy_manga_editor/app/tr/tr_icon.dart';
+import 'package:easy_manga_editor/app/tr/tr_keys.dart';
 import 'package:easy_manga_editor/app/routes/app_router.dart';
 import 'package:easy_manga_editor/app/theme/styles/colors.dart';
-import 'package:easy_manga_editor/app/theme/styles/dimensions.dart';
 import 'package:easy_manga_editor/app/theme/styles/text_styles.dart';
 import 'package:easy_manga_editor/shared/widgets/buttons/app_button.dart';
-import 'package:easy_manga_editor/shared/widgets/dialogs/custom_dialog.dart';
 import 'package:easy_manga_editor/shared/widgets/scaffold/extend_scaffold.dart';
 import 'package:flutter/material.dart';
 import 'package:auto_route/auto_route.dart';
@@ -40,14 +41,14 @@ class _HomePageState extends State<HomePage> {
           Align(
             alignment: Alignment.bottomCenter,
             child: Image.asset(
-              'assets/icons/ww_01.png',
+              TrIcon.ww01,
             ),
           ),
           Column(
             children: [
               const SizedBox(height: 60),
               Text(
-                'Easy Manga Editor',
+                TrKeys.appName.tr(),
                 style: AppTextStyles.h2.copyWith(color: Colors.white),
               ),
               const SizedBox(height: 120),
@@ -55,26 +56,6 @@ class _HomePageState extends State<HomePage> {
                 text: 'Mở Studio',
                 onPressed: () {
                   context.router.push(const StudioRoute());
-                },
-              ),
-              const SizedBox(height: 16),
-              AppButton(
-                text: 'Test Popup',
-                onPressed: () {
-                  CustomDialog.show(
-                    context: context,
-                    children: [
-                      const Text('Thoát', style: AppTextStyles.h3),
-                      const SizedBox(height: AppDimensions.spacingSmall),
-                      const Text('Bạn có muốn thoát không?',
-                          style: AppTextStyles.bodyMedium),
-                      const Text('Dữ liệu sẽ được lưu lại',
-                          style: AppTextStyles.bodyMedium),
-                      const SizedBox(height: AppDimensions.spacingLarge),
-                    ],
-                    onConfirm: () {},
-                    onCancel: () {},
-                  );
                 },
               ),
             ],
