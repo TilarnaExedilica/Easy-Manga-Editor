@@ -31,4 +31,7 @@ class AppColors {
 
   static const dialogBackgroundLight = Color(0xFFFFFFFF);
   static const dialogBackgroundDark = Color(0xFF141417);
+
+  //custom colors
+  static const customGreyBlue = Color(0xFF6989b2);
 }
