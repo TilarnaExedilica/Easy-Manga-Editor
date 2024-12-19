@@ -20,7 +20,7 @@ void main() {
 
   buffer.writeln('}');
 
-  final outputFile = File('lib/app/l10n/tr_keys.dart');
+  final outputFile = File('lib/app/tr/tr_keys.dart');
   outputFile.writeAsStringSync(buffer.toString());
 
   print('Generated tr_keys.dart successfully!');

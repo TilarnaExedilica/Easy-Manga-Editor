@@ -35,7 +35,9 @@ class AppDimensions {
   // Spacing
   static const double spacing = 8.0;
   static const double spacingSmall = 4.0;
-  static const double spacingLarge = 16.0;
+  static const double spacingMedium = 16.0;
+  static const double spacingLarge = 24.0;
+  static const double spacingExtraLarge = 60.0;
 
   // Border Width
   static const double borderWidth = 1.5;

@@ -22,5 +22,6 @@
   "folderCreationError": "Cannot create folder: No suitable path found",
   "folderError": "Error creating folder: {}",
   "controlDrawerTitle": "Control",
-  "toolDrawerTitle": "Tools"
+  "toolDrawerTitle": "Tools",
+  "placeholder_search": "Search..."
 }

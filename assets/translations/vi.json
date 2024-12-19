@@ -22,5 +22,6 @@
   "folderCreationError": "Không thể tạo thư mục: Không tìm thấy đường dẫn phù hợp",
   "folderError": "Lỗi khi tạo thư mục: {}",
   "controlDrawerTitle": "Điều khiển",
-  "toolDrawerTitle": "Công cụ"
+  "toolDrawerTitle": "Công cụ",
+  "placeholder_search": "Tìm kiếm..."
 }

@@ -26,4 +26,5 @@ class TrKeys {
   static const String folderError = 'folderError';
   static const String controlDrawerTitle = 'controlDrawerTitle';
   static const String toolDrawerTitle = 'toolDrawerTitle';
+  static const String placeholder_search = 'placeholder_search';
 }
