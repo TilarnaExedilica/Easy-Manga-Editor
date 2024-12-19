@@ -1,4 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:easy_manga_editor/app/tr/tr_keys.dart';
 import 'package:easy_manga_editor/features/settings/settings_state.dart';
 import 'package:flutter/material.dart';
 import 'package:auto_route/auto_route.dart';
@@ -59,15 +60,14 @@ class StackTree extends StatelessWidget {
 
                   await CustomDialog.show(
                     context: context,
-                    title: 'Xác nhận chuyển trang',
+                    title: TrKeys.titleAlertChangePage.tr(),
                     children: [
-                      const Text(
-                          'Bản nháp sẽ không được lưu lại, bạn có chắc muốn thoát ?'),
+                      Text(TrKeys.messageAlertChangePage.tr()),
                       const SizedBox(height: AppDimensions.spacingLarge),
                       BlocBuilder<SettingsBloc, SettingsState>(
                         builder: (context, state) {
                           return CustomCheckbox(
-                            label: 'Không nhắc tôi vấn đề này',
+                            label: TrKeys.dontRemindMe.tr(),
                             value: !state.remindAlertChangePage,
                             onChanged: (value) {
                               settingsBloc.add(

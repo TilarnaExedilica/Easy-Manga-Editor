@@ -30,5 +30,8 @@
   "auto": "Auto",
   "dark": "Dark",
   "light": "Light",
-  "remindAlertChangePage": "Alert change page"
+  "remindAlertChangePage": "Alert change page",
+  "titleAlertChangePage": "Confirm change page?",
+  "messageAlertChangePage": "The draft will not be saved, are you sure you want to exit?",
+  "dontRemindMe": "Don't remind me"
 }

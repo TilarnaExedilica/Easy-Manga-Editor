@@ -30,5 +30,8 @@
   "auto": "Tự động",
   "dark": "Tối",
   "light": "Sáng",
-  "remindAlertChangePage": "Nhắc chuyển trang"
+  "remindAlertChangePage": "Nhắc chuyển trang",
+  "titleAlertChangePage": "Xác nhận chuyển trang?",
+  "messageAlertChangePage": "Bản nháp sẽ không được lưu lại, bạn có chắc muốn thoát?",
+  "dontRemindMe": "Không nhắc tôi vấn đề này"
 }

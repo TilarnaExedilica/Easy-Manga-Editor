@@ -34,4 +34,7 @@ class TrKeys {
   static const String dark = 'dark';
   static const String light = 'light';
   static const String remindAlertChangePage = 'remindAlertChangePage';
+  static const String titleAlertChangePage = 'titleAlertChangePage';
+  static const String messageAlertChangePage = 'messageAlertChangePage';
+  static const String dontRemindMe = 'dontRemindMe';
 }
