@@ -1,4 +1,3 @@
-import 'package:easy_manga_editor/app/theme/styles/colors.dart';
 import 'package:easy_manga_editor/shared/widgets/buttons/icon_button.dart';
 import 'package:flutter/material.dart';
 import 'package:easy_manga_editor/app/theme/styles/dimensions.dart';
@@ -51,7 +50,6 @@ class CustomPageOverlay extends StatelessWidget {
               right: 0,
               child: AppIconButton(
                 icon: Broken.close_circle,
-                color: AppColors.textDark,
                 onPressed: onClose,
                 size: AppDimensions.iconMedium,
               ),
