@@ -27,4 +27,5 @@ class TrKeys {
   static const String controlDrawerTitle = 'controlDrawerTitle';
   static const String toolDrawerTitle = 'toolDrawerTitle';
   static const String placeholder_search = 'placeholder_search';
+  static const String settings = 'settings';
 }

@@ -23,5 +23,6 @@
   "folderError": "Error creating folder: {}",
   "controlDrawerTitle": "Control",
   "toolDrawerTitle": "Tools",
-  "placeholder_search": "Manga link..."
+  "placeholder_search": "Manga link...",
+  "settings": "Settings"
 }

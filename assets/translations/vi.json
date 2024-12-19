@@ -23,5 +23,6 @@
   "folderError": "Lỗi khi tạo thư mục: {}",
   "controlDrawerTitle": "Điều khiển",
   "toolDrawerTitle": "Công cụ",
-  "placeholder_search": "Link truyện..."
+  "placeholder_search": "Link truyện...",
+  "settings": "Cài đặt"
 }

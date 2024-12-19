@@ -1,6 +1,9 @@
+import 'package:easy_manga_editor/app/theme/styles/broken_icons.dart';
 import 'package:easy_manga_editor/app/theme/styles/dimensions.dart';
+import 'package:easy_manga_editor/shared/widgets/buttons/custom_button.dart';
 import 'package:easy_manga_editor/shared/widgets/drawer/project_tree.dart';
 import 'package:easy_manga_editor/shared/widgets/drawer/stack_tree.dart';
+import 'package:easy_manga_editor/shared/widgets/overlay/custom_page_overlay.dart';
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:easy_manga_editor/app/tr/tr_keys.dart';
@@ -81,10 +84,22 @@ class ControlDrawer extends StatelessWidget {
                 ),
               ),
             ),
-            child: const Column(
+            child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                ThemeButton(),
+                const ThemeButton(),
+                const SizedBox(height: AppDimensions.paddingSmall),
+                CustomButton(
+                  textColor: Theme.of(context).colorScheme.onSurface,
+                  leading: const Icon(Broken.settings),
+                  text: TrKeys.settings.tr(),
+                  onPressed: () {
+                    CustomPageOverlay.show(
+                      context: context,
+                      child: const Center(),
+                    );
+                  },
+                ),
               ],
             ),
           ),
