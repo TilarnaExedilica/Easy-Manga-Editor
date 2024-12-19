@@ -94,6 +94,7 @@ class SettingsWidget extends StatelessWidget {
                   selectedItem: context.locale.languageCode,
                   onChanged: (value) {
                     context.setLocale(Locale(value));
+                    WidgetsBinding.instance.reassembleApplication();
                   },
                 ),
               ],
