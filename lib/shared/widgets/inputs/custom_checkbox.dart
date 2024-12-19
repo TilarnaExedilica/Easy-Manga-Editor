@@ -45,49 +45,53 @@ class _CustomCheckboxState extends State<CustomCheckbox> {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () {
-        setState(() {
-          _checked = !_checked;
-        });
-        widget.onChanged(_checked);
-      },
-      borderRadius: BorderRadius.circular(8),
-      child: Row(
-        children: [
-          Container(
-            width: AppDimensions.iconMedium,
-            height: AppDimensions.iconMedium,
-            decoration: BoxDecoration(
-              border: Border.all(
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: AppDimensions.spacingSmall),
+      child: InkWell(
+        onTap: () {
+          setState(() {
+            _checked = !_checked;
+          });
+          widget.onChanged(_checked);
+        },
+        borderRadius: BorderRadius.circular(8),
+        child: Row(
+          children: [
+            Container(
+              width: AppDimensions.iconMedium,
+              height: AppDimensions.iconMedium,
+              decoration: BoxDecoration(
+                border: Border.all(
+                  color: _checked
+                      ? widget.activeColor ??
+                          Theme.of(context).colorScheme.primary
+                      : Theme.of(context).colorScheme.outline,
+                  width: 1.5,
+                ),
+                borderRadius: BorderRadius.circular(AppDimensions.radiusSmall),
                 color: _checked
                     ? widget.activeColor ??
                         Theme.of(context).colorScheme.primary
-                    : Theme.of(context).colorScheme.outline,
-                width: 1.5,
+                    : Colors.transparent,
               ),
-              borderRadius: BorderRadius.circular(AppDimensions.radiusSmall),
-              color: _checked
-                  ? widget.activeColor ?? Theme.of(context).colorScheme.primary
-                  : Colors.transparent,
+              child: _checked
+                  ? Icon(
+                      Broken.tick_square,
+                      size: 16,
+                      color: widget.checkColor ?? Colors.white,
+                    )
+                  : null,
             ),
-            child: _checked
-                ? Icon(
-                    Broken.tick_square,
-                    size: 16,
-                    color: widget.checkColor ?? Colors.white,
-                  )
-                : null,
-          ),
-          const SizedBox(width: AppDimensions.spacing),
-          Expanded(
-            child: Text(
-              widget.label,
-              style:
-                  widget.labelStyle ?? Theme.of(context).textTheme.bodyMedium,
+            const SizedBox(width: AppDimensions.spacing),
+            Expanded(
+              child: Text(
+                widget.label,
+                style:
+                    widget.labelStyle ?? Theme.of(context).textTheme.bodyMedium,
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

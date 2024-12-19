@@ -1,3 +1,5 @@
+import 'package:easy_manga_editor/features/settings/settings_bloc.dart';
+import 'package:easy_manga_editor/features/settings/settings_event.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -35,6 +37,9 @@ class App extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (context) => getIt<ThemeBloc>()..add(LoadTheme()),
+        ),
+        BlocProvider(
+          create: (context) => getIt<SettingsBloc>()..add(LoadSettings()),
         ),
       ],
       child: BlocConsumer<ThemeBloc, ThemeState>(

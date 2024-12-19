@@ -92,7 +92,7 @@ class ControlDrawer extends StatelessWidget {
                 const SizedBox(height: AppDimensions.paddingSmall),
                 CustomButton(
                   textColor: Theme.of(context).colorScheme.onSurface,
-                  leading: const Icon(Broken.settings),
+                  leading: const Icon(Broken.setting_2),
                   text: TrKeys.settings.tr(),
                   onPressed: () {
                     CustomPageOverlay.show(

@@ -1,7 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:easy_manga_editor/app/di/injection.dart';
-import 'package:easy_manga_editor/core/storage/app_storage.dart';
-import 'package:easy_manga_editor/core/utils/constants/storage_constants.dart';
+import 'package:easy_manga_editor/features/settings/settings_state.dart';
 import 'package:flutter/material.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:easy_manga_editor/app/routes/app_router.dart';
@@ -10,6 +8,9 @@ import 'package:easy_manga_editor/app/theme/styles/broken_icons.dart';
 import 'package:easy_manga_editor/shared/widgets/dialogs/custom_dialog.dart';
 import 'package:easy_manga_editor/app/theme/styles/dimensions.dart';
 import 'package:easy_manga_editor/shared/widgets/inputs/custom_checkbox.dart';
+import 'package:easy_manga_editor/features/settings/settings_bloc.dart';
+import 'package:easy_manga_editor/features/settings/settings_event.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class StackTree extends StatelessWidget {
   const StackTree({super.key});
@@ -46,7 +47,16 @@ class StackTree extends StatelessWidget {
               onTap: () async {
                 if (i < stack.length - 1) {
                   final routesToPop = stack.length - i - 1;
-                  bool dontShowAgain = false;
+                  final settingsBloc = context.read<SettingsBloc>();
+                  final settingsState = settingsBloc.state;
+
+                  if (!settingsState.remindAlertChangePage) {
+                    for (var j = 0; j < routesToPop; j++) {
+                      await router.navigatorKey.currentState?.maybePop();
+                    }
+                    return;
+                  }
+
                   await CustomDialog.show(
                     context: context,
                     title: 'Xác nhận chuyển trang',
@@ -54,24 +64,25 @@ class StackTree extends StatelessWidget {
                       const Text(
                           'Bản nháp sẽ không được lưu lại, bạn có chắc muốn thoát ?'),
                       const SizedBox(height: AppDimensions.spacingLarge),
-                      CustomCheckbox(
-                        label: 'Không nhắc tôi vấn đề này',
-                        value: dontShowAgain,
-                        onChanged: (value) {
-                          dontShowAgain = value;
+                      BlocBuilder<SettingsBloc, SettingsState>(
+                        builder: (context, state) {
+                          return CustomCheckbox(
+                            label: 'Không nhắc tôi vấn đề này',
+                            value: !state.remindAlertChangePage,
+                            onChanged: (value) {
+                              settingsBloc.add(
+                                ChangeRemindAlertChangePage(!value),
+                              );
+                            },
+                            activeColor: Theme.of(context).colorScheme.primary,
+                            checkColor: Colors.white,
+                          );
                         },
-                        activeColor: Theme.of(context).colorScheme.primary,
-                        checkColor: Colors.white,
                       ),
                     ],
                     onConfirm: () async {
                       for (var j = 0; j < routesToPop; j++) {
                         await router.navigatorKey.currentState?.maybePop();
-                      }
-
-                      if (dontShowAgain) {
-                        await getIt<AppStorage>().setString(
-                            StorageConstants.skipNavigationConfirmKey, 'true');
                       }
                     },
                   );

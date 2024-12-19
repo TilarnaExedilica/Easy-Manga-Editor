@@ -16,6 +16,7 @@ import '../../core/api/api_client.dart' as _i430;
 import '../../core/api/api_module.dart' as _i254;
 import '../../core/api/interceptors/auth_interceptor.dart' as _i304;
 import '../../core/storage/app_storage.dart' as _i944;
+import '../../features/settings/settings_bloc.dart' as _i33;
 import '../routes/app_router.dart' as _i629;
 import '../routes/guards/auth_guard.dart' as _i284;
 import '../theme/bloc/theme_bloc.dart' as _i279;
@@ -36,6 +37,7 @@ extension GetItInjectableX on _i174.GetIt {
     final routerModule = _$RouterModule();
     final apiModule = _$ApiModule();
     gh.factory<_i279.ThemeBloc>(() => _i279.ThemeBloc());
+    gh.factory<_i33.SettingsBloc>(() => _i33.SettingsBloc());
     gh.singleton<_i790.AutoRouter>(() => routerModule.router);
     gh.singleton<_i430.ApiClient>(() => _i430.ApiClient());
     gh.singletonAsync<_i944.AppStorage>(() => _i944.AppStorage.create());
