@@ -141,27 +141,37 @@ class _SearchWidgetState extends State<SearchWidget> {
           ),
         ),
         if (widget.resultSearch != null)
-          AnimatedSlide(
-            duration: const Duration(milliseconds: 200),
-            offset: Offset(0, widget.isSearching ? 0 : -0.1),
-            child: AnimatedOpacity(
-              duration: const Duration(milliseconds: 200),
-              opacity: widget.isSearching ? 1.0 : 0.0,
-              child: ClipRect(
-                child: AnimatedContainer(
-                  duration: const Duration(milliseconds: 200),
-                  margin:
-                      const EdgeInsets.only(top: AppDimensions.paddingSmall),
-                  height: widget.isSearching ? widget.resultHeight : 0,
-                  decoration: BoxDecoration(
-                    color: theme.colorScheme.surfaceContainerHighest,
-                    borderRadius: BorderRadius.circular(AppDimensions.radius),
-                    border: Border.all(
-                      color: theme.colorScheme.outline,
-                      width: AppDimensions.borderWidth,
+          AnimatedContainer(
+            duration: const Duration(milliseconds: 400),
+            curve: Curves.fastOutSlowIn,
+            margin: const EdgeInsets.only(top: AppDimensions.paddingSmall),
+            height: widget.isSearching ? widget.resultHeight : 0,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(AppDimensions.radius),
+              child: SingleChildScrollView(
+                physics: const NeverScrollableScrollPhysics(),
+                child: AnimatedOpacity(
+                  duration: const Duration(milliseconds: 300),
+                  curve: Curves.easeOut,
+                  opacity: widget.isSearching ? 1.0 : 0.0,
+                  child: AnimatedScale(
+                    duration: const Duration(milliseconds: 400),
+                    curve: Curves.easeOutCubic,
+                    scale: widget.isSearching ? 1.0 : 0.95,
+                    child: Container(
+                      height: widget.resultHeight,
+                      decoration: BoxDecoration(
+                        color: theme.colorScheme.surfaceContainerHighest,
+                        borderRadius:
+                            BorderRadius.circular(AppDimensions.radius),
+                        border: Border.all(
+                          color: theme.colorScheme.outline,
+                          width: AppDimensions.borderWidth,
+                        ),
+                      ),
+                      child: widget.resultSearch!,
                     ),
                   ),
-                  child: widget.resultSearch!,
                 ),
               ),
             ),
