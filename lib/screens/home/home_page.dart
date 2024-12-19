@@ -12,6 +12,7 @@ import 'package:easy_manga_editor/shared/widgets/search/search_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:easy_manga_editor/shared/widgets/drawer/control_drawer.dart';
+import 'package:easy_manga_editor/shared/widgets/overlay/custom_page_overlay.dart';
 
 @RoutePage()
 class HomePage extends StatefulWidget {
@@ -79,9 +80,14 @@ class _HomePageState extends State<HomePage> {
                   ),
                   const SizedBox(width: AppDimensions.spacingMedium),
                   AppIconButton(
-                    icon: Broken.document_code_2,
+                    icon: Broken.information,
                     color: AppColors.textDark,
-                    onPressed: () {},
+                    onPressed: () {
+                      CustomPageOverlay.show(
+                        context: context,
+                        child: const Center(),
+                      );
+                    },
                   ),
                 ],
               ),

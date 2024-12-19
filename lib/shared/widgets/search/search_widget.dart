@@ -70,6 +70,8 @@ class _SearchWidgetState extends State<SearchWidget> {
           Expanded(
             child: TextField(
               controller: _controller,
+              autofocus: false,
+              focusNode: FocusNode(),
               decoration: InputDecoration(
                 hintText: widget.hintText,
                 border: InputBorder.none,

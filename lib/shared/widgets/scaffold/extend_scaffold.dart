@@ -154,6 +154,9 @@ class _ExtendScaffoldState extends State<ExtendScaffold>
         onHorizontalDragStart: _handleDragStart,
         onHorizontalDragUpdate: _handleDragUpdate,
         onHorizontalDragEnd: _handleDragEnd,
+        onTap: () {
+          FocusManager.instance.primaryFocus?.unfocus();
+        },
         child: Stack(
           children: [
             // Body
