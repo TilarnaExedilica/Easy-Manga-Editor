@@ -7,7 +7,6 @@ class StorageConstants {
   static const String userIdKey = 'user_id';
   static const String usernameKey = 'username';
 
-  // Settings
-  static const String themeKey = 'theme_mode';
-  static const String localeKey = 'locale';
+  //Settings
+  static const String skipNavigationConfirmKey = 'skip_navigation_confirm';
 }

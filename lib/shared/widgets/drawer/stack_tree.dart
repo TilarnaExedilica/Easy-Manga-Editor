@@ -1,9 +1,15 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:easy_manga_editor/app/di/injection.dart';
+import 'package:easy_manga_editor/core/storage/app_storage.dart';
+import 'package:easy_manga_editor/core/utils/constants/storage_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:easy_manga_editor/app/routes/app_router.dart';
 import 'package:easy_manga_editor/app/theme/styles/text_styles.dart';
 import 'package:easy_manga_editor/app/theme/styles/broken_icons.dart';
+import 'package:easy_manga_editor/shared/widgets/dialogs/custom_dialog.dart';
+import 'package:easy_manga_editor/app/theme/styles/dimensions.dart';
+import 'package:easy_manga_editor/shared/widgets/inputs/custom_checkbox.dart';
 
 class StackTree extends StatelessWidget {
   const StackTree({super.key});
@@ -36,20 +42,56 @@ class StackTree extends StatelessWidget {
               ),
               const SizedBox(width: 8),
             ],
-            Text(
-              AppRoute.values
-                  .firstWhere(
-                    (route) =>
-                        route.name ==
-                        stack[i].name?.replaceAll('Route', '').toLowerCase(),
-                    orElse: () => AppRoute.home,
-                  )
-                  .name
-                  .tr(),
-              style: AppTextStyles.bodyMedium.copyWith(
-                color: i == stack.length - 1
-                    ? Theme.of(context).colorScheme.primary
-                    : Theme.of(context).colorScheme.onSurface,
+            InkWell(
+              onTap: () async {
+                if (i < stack.length - 1) {
+                  final routesToPop = stack.length - i - 1;
+                  bool dontShowAgain = false;
+                  await CustomDialog.show(
+                    context: context,
+                    title: 'Xác nhận chuyển trang',
+                    children: [
+                      const Text(
+                          'Bản nháp sẽ không được lưu lại, bạn có chắc muốn thoát ?'),
+                      const SizedBox(height: AppDimensions.spacingLarge),
+                      CustomCheckbox(
+                        label: 'Không nhắc tôi vấn đề này',
+                        value: dontShowAgain,
+                        onChanged: (value) {
+                          dontShowAgain = value;
+                        },
+                        activeColor: Theme.of(context).colorScheme.primary,
+                        checkColor: Colors.white,
+                      ),
+                    ],
+                    onConfirm: () async {
+                      for (var j = 0; j < routesToPop; j++) {
+                        await router.navigatorKey.currentState?.maybePop();
+                      }
+
+                      if (dontShowAgain) {
+                        await getIt<AppStorage>().setString(
+                            StorageConstants.skipNavigationConfirmKey, 'true');
+                      }
+                    },
+                  );
+                }
+              },
+              child: Text(
+                AppRoute.values
+                    .firstWhere(
+                      (route) =>
+                          route.name ==
+                          stack[i].name?.replaceAll('Route', '').toLowerCase(),
+                      orElse: () => AppRoute.home,
+                    )
+                    .name
+                    .tr(),
+                style: AppTextStyles.bodyMedium.copyWith(
+                  color: i == stack.length - 1
+                      ? Theme.of(context).colorScheme.primary
+                      : Theme.of(context).colorScheme.onSurface,
+                ),
               ),
             ),
           ],
