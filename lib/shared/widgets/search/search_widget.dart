@@ -8,6 +8,8 @@ class SearchWidget extends StatefulWidget {
   final ValueChanged<String>? onChanged;
   final VoidCallback? onSearch;
   final TextEditingController? controller;
+  final bool isSearching;
+  final Widget? resultSearch;
 
   const SearchWidget({
     super.key,
@@ -15,6 +17,8 @@ class SearchWidget extends StatefulWidget {
     this.onChanged,
     this.onSearch,
     this.controller,
+    this.isSearching = false,
+    this.resultSearch,
   });
 
   @override
@@ -55,64 +59,118 @@ class _SearchWidgetState extends State<SearchWidget> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
-    return Container(
-      height: AppDimensions.buttonHeight,
-      decoration: BoxDecoration(
-        color: theme.colorScheme.surfaceContainerHighest,
-        borderRadius: BorderRadius.circular(AppDimensions.radius),
-        border: Border.all(
-          color: theme.colorScheme.outline,
-          width: AppDimensions.borderWidth,
-        ),
-      ),
-      child: Row(
-        children: [
-          Expanded(
-            child: TextField(
-              controller: _controller,
-              autofocus: false,
-              focusNode: FocusNode(),
-              decoration: InputDecoration(
-                hintText: widget.hintText,
-                border: InputBorder.none,
-                contentPadding: const EdgeInsets.symmetric(
-                  horizontal: AppDimensions.padding,
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Container(
+          height: AppDimensions.buttonHeight,
+          decoration: BoxDecoration(
+            color: theme.colorScheme.surfaceContainerHighest,
+            borderRadius: BorderRadius.circular(AppDimensions.radius),
+            border: Border.all(
+              color: theme.colorScheme.outline,
+              width: AppDimensions.borderWidth,
+            ),
+          ),
+          child: Row(
+            children: [
+              Expanded(
+                child: TextField(
+                  controller: _controller,
+                  autofocus: false,
+                  focusNode: FocusNode(),
+                  decoration: InputDecoration(
+                    hintText: widget.hintText,
+                    border: InputBorder.none,
+                    contentPadding: const EdgeInsets.symmetric(
+                      horizontal: AppDimensions.padding,
+                    ),
+                    suffixIcon: _hasText
+                        ? IconButton(
+                            icon: const Icon(
+                              Broken.close_circle,
+                              size: AppDimensions.iconMedium,
+                            ),
+                            onPressed: _handleClear,
+                          )
+                        : IconButton(
+                            icon: const Icon(
+                              Broken.document_copy,
+                              size: AppDimensions.iconMedium,
+                            ),
+                            onPressed: _handlePaste,
+                          ),
+                  ),
                 ),
-                suffixIcon: _hasText
-                    ? IconButton(
-                        icon: const Icon(
-                          Broken.close_circle,
-                          size: AppDimensions.iconMedium,
-                        ),
-                        onPressed: _handleClear,
-                      )
-                    : IconButton(
-                        icon: const Icon(
-                          Broken.document_copy,
-                          size: AppDimensions.iconMedium,
-                        ),
-                        onPressed: _handlePaste,
+              ),
+              Container(
+                width: 1,
+                height:
+                    AppDimensions.buttonHeight - AppDimensions.paddingSmall * 2,
+                color: theme.colorScheme.outline,
+                margin: const EdgeInsets.symmetric(
+                  vertical: AppDimensions.paddingSmall,
+                ),
+              ),
+              IconButton(
+                icon: AnimatedSwitcher(
+                  duration: const Duration(milliseconds: 300),
+                  transitionBuilder:
+                      (Widget child, Animation<double> animation) {
+                    return RotationTransition(
+                      turns: animation,
+                      child: ScaleTransition(
+                        scale: animation,
+                        child: child,
                       ),
+                    );
+                  },
+                  child: Icon(
+                    widget.isSearching
+                        ? Broken.close_circle
+                        : Broken.search_normal,
+                    key: ValueKey<bool>(widget.isSearching),
+                    size: AppDimensions.iconMedium,
+                  ),
+                ),
+                onPressed: widget.onSearch,
+              ),
+            ],
+          ),
+        ),
+        if (widget.resultSearch != null)
+          AnimatedSlide(
+            duration: const Duration(milliseconds: 200),
+            offset: Offset(0, widget.isSearching ? 0 : -0.1),
+            child: AnimatedOpacity(
+              duration: const Duration(milliseconds: 200),
+              opacity: widget.isSearching ? 1.0 : 0.0,
+              child: SizedBox(
+                width: double.infinity,
+                child: AnimatedContainer(
+                  duration: const Duration(milliseconds: 200),
+                  margin:
+                      const EdgeInsets.only(top: AppDimensions.paddingSmall),
+                  constraints: const BoxConstraints(
+                    minHeight: 100,
+                    maxHeight: 435,
+                  ),
+                  decoration: BoxDecoration(
+                    color: theme.colorScheme.surfaceContainerHighest,
+                    borderRadius: BorderRadius.circular(AppDimensions.radius),
+                    border: Border.all(
+                      color: theme.colorScheme.outline,
+                      width: AppDimensions.borderWidth,
+                    ),
+                  ),
+                  child: SingleChildScrollView(
+                    child: widget.resultSearch!,
+                  ),
+                ),
               ),
             ),
           ),
-          Container(
-            width: 1,
-            height: AppDimensions.buttonHeight - AppDimensions.paddingSmall * 2,
-            color: theme.colorScheme.outline,
-            margin: const EdgeInsets.symmetric(
-              vertical: AppDimensions.paddingSmall,
-            ),
-          ),
-          IconButton(
-            icon: const Icon(
-              Broken.search_normal,
-              size: AppDimensions.iconMedium,
-            ),
-            onPressed: widget.onSearch,
-          ),
-        ],
-      ),
+      ],
     );
   }
 

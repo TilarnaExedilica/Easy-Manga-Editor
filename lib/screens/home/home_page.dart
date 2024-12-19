@@ -23,6 +23,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  bool _isSearching = false;
+
   @override
   void initState() {
     super.initState();
@@ -62,8 +64,16 @@ class _HomePageState extends State<HomePage> {
                   width: 300,
                   child: SearchWidget(
                     hintText: TrKeys.placeholder_search.tr(),
+                    isSearching: _isSearching,
+                    resultSearch: const Center(
+                      child: Text('Result'),
+                    ),
+                    onSearch: () {
+                      setState(() {
+                        _isSearching = !_isSearching;
+                      });
+                    },
                     onChanged: (value) {},
-                    onSearch: () {},
                   ),
                 ),
               ),
