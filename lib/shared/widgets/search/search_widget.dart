@@ -10,6 +10,7 @@ class SearchWidget extends StatefulWidget {
   final TextEditingController? controller;
   final bool isSearching;
   final Widget? resultSearch;
+  final double resultHeight;
 
   const SearchWidget({
     super.key,
@@ -19,6 +20,7 @@ class SearchWidget extends StatefulWidget {
     this.controller,
     this.isSearching = false,
     this.resultSearch,
+    this.resultHeight = 435,
   });
 
   @override
@@ -145,16 +147,12 @@ class _SearchWidgetState extends State<SearchWidget> {
             child: AnimatedOpacity(
               duration: const Duration(milliseconds: 200),
               opacity: widget.isSearching ? 1.0 : 0.0,
-              child: SizedBox(
-                width: double.infinity,
+              child: ClipRect(
                 child: AnimatedContainer(
                   duration: const Duration(milliseconds: 200),
                   margin:
                       const EdgeInsets.only(top: AppDimensions.paddingSmall),
-                  constraints: const BoxConstraints(
-                    minHeight: 100,
-                    maxHeight: 435,
-                  ),
+                  height: widget.isSearching ? widget.resultHeight : 0,
                   decoration: BoxDecoration(
                     color: theme.colorScheme.surfaceContainerHighest,
                     borderRadius: BorderRadius.circular(AppDimensions.radius),
@@ -163,9 +161,7 @@ class _SearchWidgetState extends State<SearchWidget> {
                       width: AppDimensions.borderWidth,
                     ),
                   ),
-                  child: SingleChildScrollView(
-                    child: widget.resultSearch!,
-                  ),
+                  child: widget.resultSearch!,
                 ),
               ),
             ),

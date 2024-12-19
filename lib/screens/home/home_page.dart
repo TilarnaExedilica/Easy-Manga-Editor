@@ -65,8 +65,31 @@ class _HomePageState extends State<HomePage> {
                   child: SearchWidget(
                     hintText: TrKeys.placeholder_search.tr(),
                     isSearching: _isSearching,
-                    resultSearch: const Center(
-                      child: Text('Result'),
+                    resultSearch: ListView.builder(
+                      itemCount: 15,
+                      itemBuilder: (context, index) {
+                        return ListTile(
+                          leading: const CircleAvatar(
+                            child: Icon(
+                              Broken.user,
+                            ),
+                          ),
+                          title: Text(
+                            'Tiêu đề mẫu ${index + 1}',
+                            style: AppTextStyles.bodyLarge,
+                          ),
+                          subtitle: Text(
+                            'Nội dung phụ cho mục ${index + 1}',
+                            style: AppTextStyles.bodySmall,
+                          ),
+                          trailing: IconButton(
+                            icon: const Icon(
+                              Broken.document_download,
+                            ),
+                            onPressed: () {},
+                          ),
+                        );
+                      },
                     ),
                     onSearch: () {
                       setState(() {
