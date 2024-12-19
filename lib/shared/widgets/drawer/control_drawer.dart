@@ -1,5 +1,6 @@
 import 'package:easy_manga_editor/app/theme/styles/broken_icons.dart';
 import 'package:easy_manga_editor/app/theme/styles/dimensions.dart';
+import 'package:easy_manga_editor/screens/settings/setting_widget.dart';
 import 'package:easy_manga_editor/shared/widgets/buttons/custom_button.dart';
 import 'package:easy_manga_editor/shared/widgets/drawer/project_tree.dart';
 import 'package:easy_manga_editor/shared/widgets/drawer/stack_tree.dart';
@@ -96,7 +97,7 @@ class ControlDrawer extends StatelessWidget {
                   onPressed: () {
                     CustomPageOverlay.show(
                       context: context,
-                      child: const Center(),
+                      child: const SettingsWidget(),
                     );
                   },
                 ),
