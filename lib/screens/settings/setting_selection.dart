@@ -1,8 +1,9 @@
+import 'package:easy_manga_editor/app/theme/styles/colors.dart';
 import 'package:easy_manga_editor/app/theme/styles/dimensions.dart';
 import 'package:flutter/material.dart';
 
-class SettingSelection extends StatefulWidget {
-  final List<String> items;
+class SettingSelection extends StatelessWidget {
+  final List<SettingOption> items;
   final String selectedItem;
   final Function(String) onChanged;
 
@@ -14,41 +15,63 @@ class SettingSelection extends StatefulWidget {
   });
 
   @override
-  State<SettingSelection> createState() => _SettingSelectionState();
-}
-
-class _SettingSelectionState extends State<SettingSelection> {
-  @override
   Widget build(BuildContext context) {
     return Wrap(
-      spacing: 8,
-      runSpacing: 8,
-      children: widget.items.map((item) {
-        final isSelected = item == widget.selectedItem;
-        return SizedBox(
-          child: GestureDetector(
-            onTap: () => widget.onChanged(item),
-            child: Container(
-              padding: const EdgeInsets.symmetric(
-                  vertical: AppDimensions.paddingSmall,
-                  horizontal: AppDimensions.padding),
-              decoration: BoxDecoration(
-                color: isSelected
-                    ? Theme.of(context).colorScheme.primary
-                    : Colors.transparent,
-                borderRadius: BorderRadius.circular(8),
-              ),
-              child: Text(
-                item,
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: isSelected ? Colors.white : null,
+      spacing: AppDimensions.paddingSmall,
+      runSpacing: AppDimensions.paddingSmall,
+      children: items.map((item) {
+        final isSelected = item.value == selectedItem;
+        return InkWell(
+          borderRadius: BorderRadius.circular(AppDimensions.radius),
+          onTap: () => onChanged(item.value),
+          child: Container(
+            padding: const EdgeInsets.symmetric(
+                horizontal: AppDimensions.padding,
+                vertical: AppDimensions.paddingSmall),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(AppDimensions.radius),
+              color: isSelected
+                  ? Theme.of(context).colorScheme.primary
+                  : Colors.transparent,
+            ),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                if (item.icon != null) ...[
+                  Icon(
+                    item.icon,
+                    size: AppDimensions.iconMedium,
+                    color: isSelected
+                        ? AppColors.textDark
+                        : Theme.of(context).colorScheme.onSurfaceVariant,
+                  ),
+                  const SizedBox(width: AppDimensions.paddingSmall),
+                ],
+                Text(
+                  item.label,
+                  style: TextStyle(
+                    color: isSelected
+                        ? AppColors.textDark
+                        : Theme.of(context).colorScheme.onSurfaceVariant,
+                  ),
                 ),
-              ),
+              ],
             ),
           ),
         );
       }).toList(),
     );
   }
+}
+
+class SettingOption {
+  final String label;
+  final String value;
+  final IconData? icon;
+
+  const SettingOption({
+    required this.label,
+    required this.value,
+    this.icon,
+  });
 }

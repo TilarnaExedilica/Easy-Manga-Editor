@@ -24,5 +24,11 @@
   "controlDrawerTitle": "Control",
   "toolDrawerTitle": "Tools",
   "placeholder_search": "Manga link...",
-  "settings": "Settings"
+  "settings": "Settings",
+  "theme": "Theme",
+  "language": "Language",
+  "auto": "Auto",
+  "dark": "Dark",
+  "light": "Light",
+  "remindAlertChangePage": "Alert change page"
 }

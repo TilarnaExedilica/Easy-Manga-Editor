@@ -24,5 +24,11 @@
   "controlDrawerTitle": "Điều khiển",
   "toolDrawerTitle": "Công cụ",
   "placeholder_search": "Link truyện...",
-  "settings": "Cài đặt"
+  "settings": "Cài đặt",
+  "theme": "Chủ đề",
+  "language": "Ngôn ngữ",
+  "auto": "Tự động",
+  "dark": "Tối",
+  "light": "Sáng",
+  "remindAlertChangePage": "Nhắc chuyển trang"
 }

@@ -1,3 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
+import 'package:easy_manga_editor/app/theme/bloc/theme_bloc.dart';
+import 'package:easy_manga_editor/app/theme/bloc/theme_event.dart';
+import 'package:easy_manga_editor/app/theme/bloc/theme_state.dart';
+import 'package:easy_manga_editor/app/tr/tr_keys.dart';
 import 'package:easy_manga_editor/screens/settings/setting_item.dart';
 import 'package:easy_manga_editor/screens/settings/setting_section.dart';
 import 'package:flutter/material.dart';
@@ -5,6 +10,7 @@ import 'package:easy_manga_editor/app/theme/styles/broken_icons.dart';
 import 'package:easy_manga_editor/app/theme/styles/dimensions.dart';
 import 'package:easy_manga_editor/app/theme/styles/text_styles.dart';
 import 'package:easy_manga_editor/screens/settings/setting_selection.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SettingsWidget extends StatelessWidget {
   const SettingsWidget({super.key});
@@ -17,53 +23,78 @@ class SettingsWidget extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Padding(
-              padding: EdgeInsets.only(
+            Padding(
+              padding: const EdgeInsets.only(
                 bottom: AppDimensions.padding,
               ),
               child: Text(
-                'Cài đặt',
+                TrKeys.settings.tr(),
                 style: AppTextStyles.h3,
               ),
             ),
             SettingSection(
               icon: Broken.autobrightness,
-              title: 'Chủ đề',
+              title: TrKeys.theme.tr(),
               children: [
-                SettingSelection(
-                  items: const ['Tự động', 'Tối', 'Sáng'],
-                  selectedItem: 'Tự động',
-                  onChanged: (value) {},
+                BlocBuilder<ThemeBloc, ThemeState>(
+                  builder: (context, state) {
+                    return SettingSelection(
+                      items: [
+                        SettingOption(
+                          label: TrKeys.auto.tr(),
+                          value: ThemeMode.system.toString(),
+                        ),
+                        SettingOption(
+                          label: TrKeys.light.tr(),
+                          value: ThemeMode.light.toString(),
+                        ),
+                        SettingOption(
+                          label: TrKeys.dark.tr(),
+                          value: ThemeMode.dark.toString(),
+                        ),
+                      ],
+                      selectedItem: state.themeMode.toString(),
+                      onChanged: (value) {
+                        context.read<ThemeBloc>().add(
+                              ChangeTheme(ThemeMode.values.firstWhere(
+                                (e) => e.toString() == value,
+                              )),
+                            );
+                      },
+                    );
+                  },
                 ),
               ],
             ),
-            const SettingSection(
+            SettingSection(
               icon: Broken.alarm,
-              title: 'Thông báo',
+              title: TrKeys.notification.tr(),
               children: [
-                SettingsItem(title: 'Nhắc chuyển trang'),
+                SettingsItem(title: TrKeys.remindAlertChangePage.tr()),
               ],
             ),
             SettingSection(
               icon: Broken.translate,
-              title: 'Ngôn ngữ',
+              title: TrKeys.language.tr(),
               children: [
                 SettingSelection(
                   items: const [
-                    'English',
-                    'Tiếng Việt',
-                    '日本語',
-                    '한국어',
-                    '中文',
-                    'Français',
-                    'Deutsch',
-                    'Italiano',
-                    'Português',
-                    'Русский',
-                    'Español',
+                    SettingOption(label: 'English', value: 'en'),
+                    SettingOption(label: 'Tiếng Việt', value: 'vi'),
+                    SettingOption(label: '日本語', value: 'ja'),
+                    SettingOption(label: '한국어', value: 'ko'),
+                    SettingOption(label: '中文', value: 'zh'),
+                    SettingOption(label: 'Français', value: 'fr'),
+                    SettingOption(label: 'Deutsch', value: 'de'),
+                    SettingOption(label: 'Italiano', value: 'it'),
+                    SettingOption(label: 'Português', value: 'pt'),
+                    SettingOption(label: 'Русский', value: 'ru'),
+                    SettingOption(label: 'Español', value: 'es'),
                   ],
-                  selectedItem: 'English',
-                  onChanged: (value) {},
+                  selectedItem: context.locale.languageCode,
+                  onChanged: (value) {
+                    context.setLocale(Locale(value));
+                  },
                 ),
               ],
             ),

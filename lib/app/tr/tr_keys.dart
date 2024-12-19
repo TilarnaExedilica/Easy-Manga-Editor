@@ -28,4 +28,10 @@ class TrKeys {
   static const String toolDrawerTitle = 'toolDrawerTitle';
   static const String placeholder_search = 'placeholder_search';
   static const String settings = 'settings';
+  static const String theme = 'theme';
+  static const String language = 'language';
+  static const String auto = 'auto';
+  static const String dark = 'dark';
+  static const String light = 'light';
+  static const String remindAlertChangePage = 'remindAlertChangePage';
 }
